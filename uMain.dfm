@@ -50,7 +50,7 @@ object Form1: TForm1
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
       'C:\Users\Daniel Ferreira\Documents\Delphi\projeto_delphi\Projeto' +
-      '_Delphi\Win32\Debug\dll\libpq.dll'
+      '_Delphi\Win32\Debug\dll\lib\libpq.dll'
     Left = 512
     Top = 344
   end

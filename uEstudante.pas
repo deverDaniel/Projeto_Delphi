@@ -1,7 +1,7 @@
 unit uEstudante;
 
 interface
-  type TEstudantes = class
+  type TEstudante = class
     private
       id: Integer;
       nome: String;

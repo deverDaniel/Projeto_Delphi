@@ -128,6 +128,9 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uEstudante.pas"/>
+        <DCCReference Include="uProfessores.pas"/>
+        <DCCReference Include="uDisciplinas.pas"/>
+        <DCCReference Include="uTurmas.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
