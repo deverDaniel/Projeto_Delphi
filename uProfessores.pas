@@ -1,7 +1,7 @@
 unit uProfessores;
 
 interface
-  type Professores = class
+  type TProfessor = class
     private
       id: Integer;
       nome: String;
@@ -19,34 +19,34 @@ implementation
 
 { Professores }
 
-constructor Professores.Create(id: Integer; nome: String);
+constructor TProfessor.Create(id: Integer; nome: String);
 begin
   self.id:= id;
   self.nome:= nome;
 
 end;
 
-function Professores.getCpf: String;
+function TProfessor.getCpf: String;
 begin
   result:= self.cpf;
 end;
 
-function Professores.getId: Integer;
+function TProfessor.getId: Integer;
 begin
   result:= self.id;
 end;
 
-function Professores.getNome: String;
+function TProfessor.getNome: String;
 begin
   result:= self.nome
 end;
 
-procedure Professores.setCpf(cpf: String);
+procedure TProfessor.setCpf(cpf: String);
 begin
   self.cpf:= cpf;
 end;
 
-procedure Professores.setNome(nome: String);
+procedure TProfessor.setNome(nome: String);
 begin
   self.nome:= nome
 end;

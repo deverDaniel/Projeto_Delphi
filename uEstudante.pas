@@ -1,7 +1,7 @@
 unit uEstudante;
 
 interface
-  type Estudantes = class
+  type TEstudantes = class
     private
       id: Integer;
       nome: String;
@@ -16,24 +16,24 @@ implementation
 
 { Estudantes }
 
-constructor Estudantes.Create(id: Integer; nome: String);
+constructor TEstudantes.Create(id: Integer; nome: String);
 begin
   self.id:= id;
   self.nome:= nome;
 
 end;
 
-function Estudantes.getId: Integer;
+function TEstudantes.getId: Integer;
 begin
   result:= self.id;
 end;
 
-function Estudantes.getNome: String;
+function TEstudantes.getNome: String;
 begin
   result:= self.nome
 end;
 
-procedure Estudantes.setNome(nome: String);
+procedure TEstudantes.setNome(nome: String);
 begin
   self.nome:= nome
 end;

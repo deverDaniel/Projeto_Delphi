@@ -1,7 +1,7 @@
 unit uDisciplinas;
 
 interface
-  type Disciplinas = class
+  type TDisciplina = class
     private
       id: Integer;
       nome: String;
@@ -16,24 +16,24 @@ implementation
 
 { Disciplinas }
 
-constructor Disciplinas.Create(id: Integer; nome: String);
+constructor TDisciplina.Create(id: Integer; nome: String);
 begin
   self.id:= id;
   self.nome:= nome;
 
 end;
 
-function Disciplinas.getId: Integer;
+function TDisciplina.getId: Integer;
 begin
   result:= self.id;
 end;
 
-function Disciplinas.getNome: String;
+function TDisciplina.getNome: String;
 begin
   result:= self.nome
 end;
 
-procedure Disciplinas.setNome(nome: String);
+procedure TDisciplina.setNome(nome: String);
 begin
   self.nome:= nome
 end;
