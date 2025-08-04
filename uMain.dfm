@@ -35,23 +35,23 @@ object Form1: TForm1
       'Password=root'
       'Server=localhost'
       'DriverID=PG')
-    Left = 592
-    Top = 328
+    Left = 152
+    Top = 416
   end
   object FDQuery1: TFDQuery
     Connection = FDConnection1
-    Left = 584
-    Top = 408
+    Left = 368
+    Top = 416
   end
   object DataSource1: TDataSource
-    Left = 504
+    Left = 64
     Top = 416
   end
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     VendorLib = 
       'C:\Users\Daniel Ferreira\Documents\Delphi\projeto_delphi\Projeto' +
       '_Delphi\Win32\Debug\dll\lib\libpq.dll'
-    Left = 512
-    Top = 344
+    Left = 272
+    Top = 416
   end
 end

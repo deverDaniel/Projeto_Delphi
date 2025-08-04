@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
-  Vcl.Tabs, Vcl.ComCtrls;
+  Vcl.Tabs, Vcl.ComCtrls, uEstudante;
 
 type
   TForm1 = class(TForm)
@@ -24,7 +24,7 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+    connection: TFDConnection;
   end;
 
 var
@@ -35,12 +35,14 @@ implementation
 {$R *.dfm}
 
 procedure TForm1.FormCreate(Sender: TObject);
+ var estudante: TEstudante;
 begin
-  FDConnection1.Connected := True;
+  connection:= FDConnection1;
+  connection.Connected:= true;
+  estudante:= Testudante.Create(connection);
+  estudante.setNome('Luis');
+  estudante.Adicionar;
 
-  FDQuery1.Connection := FDConnection1;
-  FDQuery1.SQL.Text := 'SELECT * FROM Professores';
-  FDQuery1.Open;
 end;
 
 end.
