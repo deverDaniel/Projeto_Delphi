@@ -17,7 +17,7 @@ interface
   end;
 implementation
 
-{ Estudantes }
+{ Professores }
 
 constructor Professores.Create(id: Integer; nome: String);
 begin
