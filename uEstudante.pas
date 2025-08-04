@@ -16,24 +16,24 @@ implementation
 
 { Estudantes }
 
-constructor TEstudantes.Create(id: Integer; nome: String);
+constructor TEstudante.Create(id: Integer; nome: String);
 begin
   self.id:= id;
   self.nome:= nome;
 
 end;
 
-function TEstudantes.getId: Integer;
+function TEstudante.getId: Integer;
 begin
   result:= self.id;
 end;
 
-function TEstudantes.getNome: String;
+function TEstudante.getNome: String;
 begin
   result:= self.nome
 end;
 
-procedure TEstudantes.setNome(nome: String);
+procedure TEstudante.setNome(nome: String);
 begin
   self.nome:= nome
 end;
