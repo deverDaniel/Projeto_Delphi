@@ -11,6 +11,7 @@ uses
     connection: TFDConnection;
     constructor Create(connection: TFDConnection);
     procedure AdicionarEstudante(nome:String; id: Integer);
+    Function SelectEstudantePorId(id: Integer):TEstudante;
   end;
 
 
@@ -32,5 +33,13 @@ begin
 end;
 
 
+
+function TEstudanteController.SelectEstudantePorId(id: Integer): TEstudante;
+begin
+  FEstudante:= TEstudante.Create(connection);
+  FEstudante.setId(id);
+  FEstudante.SelectEstudanteporid;
+  result:= Festudante;
+end;
 
 end.

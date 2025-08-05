@@ -38,15 +38,20 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
-  estudante: TEstudanteController;
+  estudantecontroller: TEstudanteController;
+  estudante: Testudante;
 begin
+  connection:= FDConnection1;
   //  validar os campos
   // if edit_nome.text = '' then begin
     //ShowMessage('campro nome obrigatorio');
   // end;
-  connection := FDConnection1;
+
   connection.Connected := true;
-  estudante:= TEstudanteController.Create(connection);
+  estudantecontroller:= TEstudanteController.Create(connection);
+  estudante:= estudantecontroller.SelectEstudantePorId(6);
+  showMessage(estudante.getNome);
+  connection.Connected := False;
 end;
 
 end.
