@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef,
-  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante;
+  Vcl.Tabs, Vcl.ComCtrls, uEstudante;
 
 type
   TForm1 = class(TForm)
@@ -38,15 +38,19 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
-  estudante: TEstudanteController;
+  estudante: TEstudante;
 begin
-  //  validar os campos
-  // if edit_nome.text = '' then begin
-    //ShowMessage('campro nome obrigatorio');
-  // end;
   connection := FDConnection1;
   connection.Connected := true;
-  estudante:= TEstudanteController.Create(connection);
+  estudante := TEstudante.Create(connection);
+  estudante.setNome('');
+  Try
+    estudante.Adicionar;
+  Except
+    on E:Exception do begin
+      ShowMessage(e.Message);
+    end;
+  End;
 end;
 
 end.

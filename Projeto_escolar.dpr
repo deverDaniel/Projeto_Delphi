@@ -3,11 +3,12 @@ program Projeto_escolar;
 uses
   Vcl.Forms,
   uMain in 'uMain.pas' {Form1},
-  uEstudante in 'uEstudante.pas',
-  uProfessores in 'uProfessores.pas',
-  uDisciplinas in 'uDisciplinas.pas',
-  uTurmas in 'uTurmas.pas',
-  uMatricula in 'uMatricula.pas';
+  uEstudante in 'model\uEstudante.pas',
+  uProfessores in 'model\uProfessores.pas',
+  uDisciplinas in 'model\uDisciplinas.pas',
+  uTurmas in 'model\uTurmas.pas',
+  uMatricula in 'model\uMatricula.pas',
+  uEstudantecontroller in 'controller\uEstudantecontroller.pas';
 
 {$R *.res}
 
