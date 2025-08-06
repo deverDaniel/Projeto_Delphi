@@ -134,6 +134,7 @@
         <DCCReference Include="model\uMatricula.pas"/>
         <DCCReference Include="controller\uEstudantecontroller.pas"/>
         <DCCReference Include="controller\uProfessorController.pas"/>
+        <DCCReference Include="controller\uDisciplinaController.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef,
-  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController;
+  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController, uDisciplinas, uDisciplinaController;
 
 type
   TForm1 = class(TForm)
@@ -42,18 +42,22 @@ var
   estudante: Testudante;
   professorController: TProfessorController;
   professor: TProfessor;
+  disciplinaController: TDisciplinaController;
+  disciplina: TDisciplina;
 begin
   connection:= FDConnection1;
   //  validar os campos
   // if edit_nome.text = '' then begin
-    //ShowMessage('campro nome obrigatorio');
+    //ShowMessage('campo nome obrigatorio');
   // end;
 
   connection.Connected := true;
-  professorController:= TProfessorController.Create(connection);
+  disciplinaController:= TDisciplinaController.Create(connection);
+  //disciplinaController.DeletarDisciplina(4);
   //professor:= professorController.SelectProfessorPorId(2);
   //showMessage(professor.getNome);
   //showMessage(professor.getCpf);
+  //ShowMessage(disciplina.getNome);
   connection.Connected := False;
 end;
 

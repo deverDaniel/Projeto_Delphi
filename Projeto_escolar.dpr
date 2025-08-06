@@ -9,7 +9,8 @@ uses
   uTurmas in 'model\uTurmas.pas',
   uMatricula in 'model\uMatricula.pas',
   uEstudantecontroller in 'controller\uEstudantecontroller.pas',
-  uProfessorController in 'controller\uProfessorController.pas';
+  uProfessorController in 'controller\uProfessorController.pas',
+  uDisciplinaController in 'controller\uDisciplinaController.pas';
 
 {$R *.res}
 
