@@ -11,7 +11,8 @@ uses
   uEstudantecontroller in 'controller\uEstudantecontroller.pas',
   uProfessorController in 'controller\uProfessorController.pas',
   uDisciplinaController in 'controller\uDisciplinaController.pas',
-  uTurmaController in 'controller\uTurmaController.pas';
+  uTurmaController in 'controller\uTurmaController.pas',
+  uMatriculaController in 'controller\uMatriculaController.pas';
 
 {$R *.res}
 

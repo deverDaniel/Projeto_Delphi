@@ -12,7 +12,8 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef,
   Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController,
-  uDisciplinas, uDisciplinaController, uTurmas, uTurmaController;
+  uDisciplinas, uDisciplinaController, uTurmas, uTurmaController,
+  uMatricula, uMatriculaController;
 
 type
   TForm1 = class(TForm)
@@ -47,6 +48,8 @@ var
   disciplina: TDisciplina;
   turmaController: TTurmaController;
   turma: TTurma;
+  matriculaController: TMatriculaController;
+  matricula: Tmatricula;
 begin
   connection:= FDConnection1;
   //  validar os campos
@@ -55,12 +58,13 @@ begin
   // end;
 
   connection.Connected := true;
-  disciplinaController:= TDisciplinaController.Create(connection);
-  turmaController:= TTurmaController.Create(connection);
-  turma:= turmaController.SelectTurmaPorId(3);
+  matriculaController:= TMatriculaController.Create(connection);
+  matriculaController.DeletarMatricula(3);
+  //turmaController:= TTurmaController.Create(connection);
+  //turma:= turmaController.SelectTurmaPorId(3);
   //disciplinaController.DeletarDisciplina(4);
   //professor:= professorController.SelectProfessorPorId(2);
-  showMessage(turma.getIdDisciplina.ToString);
+  //showMessage(matricula.getIdEstudante.ToString);
   //showMessage(professor.getCpf);
   //ShowMessage(disciplina.getNome);
   connection.Connected := False;
