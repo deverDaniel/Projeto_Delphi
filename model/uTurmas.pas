@@ -2,8 +2,7 @@ unit uTurmas;
 
 interface
 
-uses uProfessores, uDisciplinas, uProfessorController, data.DB,
-  FireDAC.Comp.Client, System.SysUtils, FMX.Dialogs;
+uses  data.DB, FireDAC.Comp.Client, System.SysUtils, FMX.Dialogs;
 
 type
   TTurma = class
@@ -130,11 +129,9 @@ end;
 procedure TTurma.SelectTurmaporid;
 var
   Query: TFDQuery;
-  professorcontroller: TProfessorController;
 begin
   try
     try
-      professorcontroller := TProfessorController.Create(self.connection);
       Query := TFDQuery.Create(nil);
       Query.connection := self.connection;
       Query.SQL.Text := 'select * from Turmas WHERE id = ' +

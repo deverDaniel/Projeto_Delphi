@@ -2,21 +2,23 @@ unit uMatricula;
 
 interface
 
-uses uTurmas, uEstudante;
+uses data.DB, FireDAC.Comp.Client, System.SysUtils, FMX.Dialogs;
 
 type
-  TTurma = class
+  TMatricula = class
   private
     id: Integer;
-    turma: TTurma;
-    estudante: TEstudante;
+    id_turma: Integer;
+    id_estudante: Integer;
+    connection: TFDConnection;
   public
     function getId: Integer;
-    function getTurma: TTurma;
-    procedure setTurma(turma: TTurma);
-    function getEstudante: TEstudante;
-    procedure setEstudante(estudante: TEstudante);
-    constructor Create(id: Integer; turma: TTurma; estudante: TEstudante);
+    procedure setId (id: Integer);
+    function getIdTurma: Integer;
+    procedure setIdTurma(id_turma: Integer);
+    function getIdEstudante: Integer;
+    procedure setIdEstudante(id_estudante: Integer);
+    constructor Create(connection: TFDConnection);
 
   end;
 
@@ -24,37 +26,40 @@ implementation
 
 { TTurma }
 
-constructor TTurma.Create(id: Integer; turma: TTurma; estudante: TEstudante);
+constructor TMatricula.Create(connection: TFDConnection);
 begin
-  self.id := id;
-  self.turma := turma;
-  self.estudante := estudante;
+  self.connection:= connection;
 
 end;
 
-function TTurma.getEstudante: TEstudante;
+function TMatricula.getIdEstudante: Integer;
 begin
-  result := self.estudante;
+  result := self.id_estudante;
 end;
 
-function TTurma.getId: Integer;
+function TMatricula.getId: Integer;
 begin
   result := self.id;
 end;
 
-function TTurma.getTurma: TTurma;
+function TMatricula.getIdTurma: Integer;
 begin
-  result := self.turma
+  result := self.id_turma;
 end;
 
-procedure TTurma.setEstudante(estudante: TEstudante);
+procedure TMatricula.setId(id: Integer);
 begin
-  self.estudante := estudante;
+  self.id:= id;
 end;
 
-procedure TTurma.setTurma(turma: TTurma);
+procedure TMatricula.setIdEstudante(id_estudante: Integer);
 begin
-  self.turma := turma
+  self.id_estudante := id_estudante;
+end;
+
+procedure TMatricula.setIdTurma(id_turma: Integer);
+begin
+  self.id_turma := id_turma;
 end;
 
 end.
