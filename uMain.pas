@@ -49,8 +49,8 @@ begin
 
   connection.Connected := true;
   estudantecontroller:= TEstudanteController.Create(connection);
-  estudante:= estudantecontroller.SelectEstudantePorId(6);
-  showMessage(estudante.getNome);
+  estudantecontroller.DeletarEstudante(8);
+  //showMessage(estudante.getNome);
   connection.Connected := False;
 end;
 

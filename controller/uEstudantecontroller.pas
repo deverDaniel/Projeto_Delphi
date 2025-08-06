@@ -10,8 +10,10 @@ uses
   public
     connection: TFDConnection;
     constructor Create(connection: TFDConnection);
-    procedure AdicionarEstudante(nome:String; id: Integer);
+    procedure AdicionarEstudante(nome:String);
     Function SelectEstudantePorId(id: Integer):TEstudante;
+    procedure AlterarEstudante(id:integer; nome:String);
+    procedure DeletarEstudante(id: Integer);
   end;
 
 
@@ -19,11 +21,18 @@ implementation
 
 { TEstudanteController }
 
-procedure TEstudanteController.AdicionarEstudante(nome:String; id: Integer);
+procedure TEstudanteController.AdicionarEstudante(nome:String);
 begin
-  FEstudante.setId(id);
   FEstudante.setNome(nome);
   FEstudante.Adicionar;
+end;
+
+procedure TEstudanteController.AlterarEstudante(id: integer; nome: String);
+begin
+  FEstudante:= TEstudante.Create(connection);
+  FEstudante.setId(id);
+  FEstudante.setNome(nome);
+  FEstudante.AlterarEstudante;
 end;
 
 constructor TEstudanteController.Create(connection: TFDConnection);
@@ -33,6 +42,13 @@ begin
 end;
 
 
+
+procedure TEstudanteController.DeletarEstudante(id:Integer);
+begin
+  FEstudante:= TEstudante.Create(connection);
+  FEstudante.setId(id);
+  FEstudante.DeletarEstudante;
+end;
 
 function TEstudanteController.SelectEstudantePorId(id: Integer): TEstudante;
 begin
