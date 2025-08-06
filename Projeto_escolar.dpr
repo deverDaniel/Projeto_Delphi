@@ -8,7 +8,8 @@ uses
   uDisciplinas in 'model\uDisciplinas.pas',
   uTurmas in 'model\uTurmas.pas',
   uMatricula in 'model\uMatricula.pas',
-  uEstudantecontroller in 'controller\uEstudantecontroller.pas';
+  uEstudantecontroller in 'controller\uEstudantecontroller.pas',
+  uProfessorController in 'controller\uProfessorController.pas';
 
 {$R *.res}
 

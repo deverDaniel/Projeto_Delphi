@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef,
-  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante;
+  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController;
 
 type
   TForm1 = class(TForm)
@@ -40,6 +40,8 @@ procedure TForm1.FormCreate(Sender: TObject);
 var
   estudantecontroller: TEstudanteController;
   estudante: Testudante;
+  professorController: TProfessorController;
+  professor: TProfessor;
 begin
   connection:= FDConnection1;
   //  validar os campos
@@ -48,9 +50,10 @@ begin
   // end;
 
   connection.Connected := true;
-  estudantecontroller:= TEstudanteController.Create(connection);
-  estudantecontroller.DeletarEstudante(8);
-  //showMessage(estudante.getNome);
+  professorController:= TProfessorController.Create(connection);
+  //professor:= professorController.SelectProfessorPorId(2);
+  //showMessage(professor.getNome);
+  //showMessage(professor.getCpf);
   connection.Connected := False;
 end;
 

@@ -133,6 +133,7 @@
         <DCCReference Include="model\uTurmas.pas"/>
         <DCCReference Include="model\uMatricula.pas"/>
         <DCCReference Include="controller\uEstudantecontroller.pas"/>
+        <DCCReference Include="controller\uProfessorController.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
