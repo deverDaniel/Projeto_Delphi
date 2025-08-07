@@ -44,8 +44,10 @@ var
   estudante: Testudante;
   professorController: TProfessorController;
   professor: TProfessor;
+  Listaprofessores: TObjectList<Tprofessor>;
   disciplinaController: TDisciplinaController;
   disciplina: TDisciplina;
+  Listadisciplinas: TObjectList<Tdisciplina>;
   turmaController: TTurmaController;
   turma: TTurma;
   matriculaController: TMatriculaController;
@@ -59,12 +61,13 @@ begin
   // end;
 
   connection.Connected := true;
-  estudantecontroller:= Testudantecontroller.Create(connection);
-  listaEstudantes:= estudantecontroller.ListarEstudantes;
-  for estudante in ListaEstudantes do begin
-    showMessage(estudante.getNome);
+  disciplinaController:= TdisciplinaController.Create(connection);
+  listadisciplinas:= disciplinacontroller.Listardisciplinas;
+  for disciplina in Listadisciplinas do begin
+    showMessage(disciplina.getNome);
+    showMessage(disciplina.getId.ToString);
   end;
-   ListaEstudantes.Free;
+   listadisciplinas.Free;
   //turmaController:= TTurmaController.Create(connection);
   //turma:= turmaController.SelectTurmaPorId(3);
   //disciplinaController.DeletarDisciplina(4);

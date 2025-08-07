@@ -2,7 +2,7 @@ unit uDisciplinaController;
 
 interface
 uses
-  uDisciplinas, FireDAC.Comp.Client, System.SysUtils;
+  uDisciplinas, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
 
   type TDisciplinaController = class
   private
@@ -14,6 +14,7 @@ uses
     Function SelectDisciplinaPorId(id: Integer):TDisciplina;
     procedure AlterarDisciplina(id:integer; nome:String);
     procedure DeletarDisciplina(id: Integer);
+     function ListarDisciplinas: TObjectList<TDisciplina>;
   end;
 
 
@@ -50,6 +51,37 @@ begin
   FDisciplina.Deletar;
 end;
 
+function TDisciplinaController.ListarDisciplinas: TObjectList<TDisciplina>;
+var Query: TFDQuery;
+    disciplinas:TDisciplina;
+    ListaDisciplinas:TObjectList<TDisciplina>;
+begin
+  try
+    try
+      ListaDisciplinas:=TObjectList<TDisciplina>.Create;
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select * FROM public.disciplinas';
+      Query.Open(Query.SQL.Text);
+      while (Not Query.Eof) do begin
+        disciplinas:=TDisciplina.Create(self.connection);
+        disciplinas.setId(Query.FieldByName('id').AsInteger);
+        disciplinas.setNome(Query.FieldByName('nome').AsString);
+        ListaDisciplinas.Add(disciplinas);
+        Query.Next;
+      end;
+      Result:=ListaDisciplinas;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
+end;
 function TDisciplinaController.SelectDisciplinaPorId(id: Integer): TDisciplina;
 begin
   FDisciplina:= TDisciplina.Create(connection);
