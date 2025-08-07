@@ -2,7 +2,7 @@ unit uProfessorController;
 
 interface
 uses
-  uProfessores, FireDAC.Comp.Client, System.SysUtils;
+  uProfessores, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
 
   type TProfessorController = class
   private
@@ -14,6 +14,7 @@ uses
     Function SelectProfessorPorId(id: Integer):TProfessor;
     procedure Alterarprofessor(id:integer; nome, cpf:String);
     procedure DeletarProfessor(id: Integer);
+    function ListarProfessores: TObjectList<TProfessor>;
   end;
 
 
@@ -50,6 +51,39 @@ begin
   FProfessor:= TProfessor.Create(connection);
   FProfessor.setId(id);
   FProfessor.DeletarProfessor;
+end;
+
+function TProfessorController.ListarProfessores: TObjectList<TProfessor>;
+var Query: TFDQuery;
+    Professor:TProfessor;
+    ListaProfessores:TObjectList<TProfessor>;
+begin
+  try
+    try
+      ListaProfessores:= TObjectList<TProfessor>.Create;
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select * FROM public.professores';
+      Query.Open(Query.SQL.Text);
+      while (Not Query.Eof) do begin
+        Professor:=TProfessor.Create(self.connection);
+        Professor.setId(Query.FieldByName('id').AsInteger);
+        Professor.setNome(Query.FieldByName('nome').AsString);
+        Professor.setcpf(Query.FieldByName('cpf').AsString);
+        ListaProfessores.Add(Professor);
+        Query.Next;
+      end;
+      Result:=ListaProfessores;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
 end;
 
 function TProfessorController.SelectProfessorPorId(id: Integer): TProfessor;
