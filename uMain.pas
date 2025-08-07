@@ -13,7 +13,8 @@ uses
   FireDAC.Phys.PGDef,
   Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController,
   uDisciplinas, uDisciplinaController, uTurmas, uTurmaController,
-  uMatricula, uMatriculaController, System.Generics.Collections;
+  uMatricula, uMatriculaController, System.Generics.Collections, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage;
 
 type
   TForm1 = class(TForm)
@@ -24,7 +25,21 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    pnl_fundo: TPanel;
+    pnl_esquerda: TPanel;
+    pnl_direita: TPanel;
+    pnl_logo: TPanel;
+    pnl_btn_dashboard: TPanel;
+    Image1: TImage;
+    Label1: TLabel;
+    pnl_btn_professor: TPanel;
+    Image2: TImage;
+    Label2: TLabel;
+    Panel1: TPanel;
+    Image3: TImage;
+    lbl_estudante: TLabel;
     procedure FormCreate(Sender: TObject);
+    procedure Label2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,6 +94,11 @@ begin
   //showMessage(professor.getCpf);
   //ShowMessage(disciplina.getNome);
   connection.Connected := False;
+end;
+
+procedure TForm1.Label2Click(Sender: TObject);
+begin
+aasdadsa
 end;
 
 end.
