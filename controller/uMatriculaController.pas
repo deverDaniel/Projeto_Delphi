@@ -1,7 +1,7 @@
 unit uMatriculaController;
 interface
 uses
-  uMatricula, FireDAC.Comp.Client, System.SysUtils;
+  uMatricula, FireDAC.Comp.Client, System.SysUtils, system.Generics.Collections;
 
   type TMatriculaController = class
   private
@@ -13,6 +13,7 @@ uses
     Function SelectMatriculaPorId(id: Integer):TMatricula;
     procedure AlterarMatricula(id, id_turma, id_estudante: integer);
     procedure DeletarMatricula(id: Integer);
+    function ListarMatriculas: TObjectList<TMatricula>;
   end;
 
 
@@ -49,6 +50,39 @@ begin
   FMatricula:= TMatricula.Create(connection);
   FMatricula.setId(id);
   FMatricula.Deletar;
+end;
+
+function TMatriculaController.ListarMatriculas: TObjectList<TMatricula>;
+var Query: TFDQuery;
+    matricula:TMatricula;
+    Listamatriculas:TObjectList<TMatricula>;
+begin
+  try
+    try
+      Listamatriculas:= TObjectList<TMatricula>.Create;
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select * FROM public.Matriculas';
+      Query.Open(Query.SQL.Text);
+      while (Not Query.Eof) do begin
+        matricula:=TMatricula.Create(self.connection);
+        matricula.setId(Query.FieldByName('id').AsInteger);
+        matricula.setIdTurma(Query.FieldByName('id_turma').AsInteger);
+        matricula.setIdEstudante(Query.FieldByName('id_estudante').AsInteger);
+        Listamatriculas.Add(matricula);
+        Query.Next;
+      end;
+      Result:=Listamatriculas;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
 end;
 
 function TMatriculaController.SelectMatriculaPorId(id: Integer): TMatricula;

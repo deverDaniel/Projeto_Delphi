@@ -42,6 +42,7 @@ procedure TForm1.FormCreate(Sender: TObject);
 var
   estudantecontroller: TEstudanteController;
   estudante: Testudante;
+  ListaEstudantes: TObjectList<Testudante>;
   professorController: TProfessorController;
   professor: TProfessor;
   Listaprofessores: TObjectList<Tprofessor>;
@@ -53,7 +54,8 @@ var
   Listaturmas: TObjectList<Tturma>;
   matriculaController: TMatriculaController;
   matricula: Tmatricula;
-  ListaEstudantes: TObjectList<Testudante>;
+  Listamatriculas: TObjectList<Tmatricula>;
+
 begin
   connection:= FDConnection1;
   //  validar os campos
@@ -62,13 +64,13 @@ begin
   // end;
 
   connection.Connected := true;
-  turmaController:= TturmaController.Create(connection);
-  listaturmas:= turmacontroller.Listarturmas;
-  for turma in Listaturmas do begin
-    showMessage(turma.getIdProfessor.ToString);
-    showMessage(turma.getIdDisciplina.ToString);
+  matriculaController:= TmatriculaController.Create(connection);
+  listamatriculas:= matriculacontroller.Listarmatriculas;
+  for matricula in Listamatriculas do begin
+    showMessage(matricula.getIdTurma.ToString);
+    showMessage(matricula.getIdEstudante.ToString);
   end;
-   listaturmas.Free;
+   listamatriculas.Free;
   //turmaController:= TTurmaController.Create(connection);
   //turma:= turmaController.SelectTurmaPorId(3);
   //disciplinaController.DeletarDisciplina(4);
