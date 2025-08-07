@@ -2,7 +2,7 @@ unit uEstudanteController;
 
 interface
 uses
-  uEstudante, FireDAC.Comp.Client, System.SysUtils;
+  uEstudante, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
 
   type TEstudanteController = class
   private
@@ -14,6 +14,7 @@ uses
     Function SelectEstudantePorId(id: Integer):TEstudante;
     procedure AlterarEstudante(id:integer; nome:String);
     procedure DeletarEstudante(id: Integer);
+    function ListarEstudantes: TObjectList<TEstudante>;
   end;
 
 
@@ -56,6 +57,38 @@ begin
   FEstudante.setId(id);
   FEstudante.SelectEstudanteporid;
   result:= Festudante;
+end;
+
+function TEstudanteController.ListarEstudantes: TObjectList<TEstudante>;
+var Query: TFDQuery;
+    Estudante:TEstudante;
+    ListaEstudantes:TObjectList<TEstudante>;
+begin
+  try
+    try
+      ListaEstudantes:=TObjectList<TEstudante>.Create;
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select * FROM public.estudantes';
+      Query.Open(Query.SQL.Text);
+      while (Not Query.Eof) do begin
+        Estudante:=TEstudante.Create(self.connection);
+        Estudante.setId(Query.FieldByName('id').AsInteger);
+        Estudante.setNome(Query.FieldByName('nome').AsString);
+        ListaEstudantes.Add(Estudante);
+        Query.Next;
+      end;
+      Result:=ListaEstudantes;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
 end;
 
 end.

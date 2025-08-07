@@ -2,7 +2,7 @@ unit uEstudante;
 
 interface
 
-uses data.DB, FireDAC.Comp.Client, System.SysUtils, FMX.Dialogs;
+uses data.DB, FireDAC.Comp.Client, System.SysUtils, FMX.Dialogs, system.Generics.Collections;
 
 type
   TEstudante = class
@@ -113,6 +113,8 @@ function TEstudante.getNome: String;
 begin
   result := self.nome
 end;
+
+
 
 procedure TEstudante.SelectEstudanteporid;
 var

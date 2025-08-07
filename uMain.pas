@@ -13,7 +13,7 @@ uses
   FireDAC.Phys.PGDef,
   Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController,
   uDisciplinas, uDisciplinaController, uTurmas, uTurmaController,
-  uMatricula, uMatriculaController;
+  uMatricula, uMatriculaController, System.Generics.Collections;
 
 type
   TForm1 = class(TForm)
@@ -50,6 +50,7 @@ var
   turma: TTurma;
   matriculaController: TMatriculaController;
   matricula: Tmatricula;
+  ListaEstudantes: TObjectList<Testudante>;
 begin
   connection:= FDConnection1;
   //  validar os campos
@@ -58,8 +59,12 @@ begin
   // end;
 
   connection.Connected := true;
-  matriculaController:= TMatriculaController.Create(connection);
-  matriculaController.DeletarMatricula(3);
+  estudantecontroller:= Testudantecontroller.Create(connection);
+  listaEstudantes:= estudantecontroller.ListarEstudantes;
+  for estudante in ListaEstudantes do begin
+    showMessage(estudante.getNome);
+  end;
+   ListaEstudantes.Free;
   //turmaController:= TTurmaController.Create(connection);
   //turma:= turmaController.SelectTurmaPorId(3);
   //disciplinaController.DeletarDisciplina(4);
