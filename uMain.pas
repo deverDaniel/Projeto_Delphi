@@ -11,10 +11,10 @@ uses
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef,
-  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessores, uProfessorController,
-  uDisciplinas, uDisciplinaController, uTurmas, uTurmaController,
+  Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessor, uProfessorController,
+  uDisciplina, uDisciplinaController, uTurma, uTurmaController,
   uMatricula, uMatriculaController, System.Generics.Collections, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao;
 
 type
   TForm1 = class(TForm)
@@ -23,25 +23,37 @@ type
     DataSource1: TDataSource;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     pnl_fundo: TPanel;
     pnl_esquerda: TPanel;
     pnl_direita: TPanel;
     pnl_logo: TPanel;
     pnl_btn_dashboard: TPanel;
-    Image1: TImage;
-    Label1: TLabel;
+    img_dashboard: TImage;
+    lbl_dashboard: TLabel;
     pnl_btn_professor: TPanel;
-    Image2: TImage;
+    img_professor: TImage;
     Label2: TLabel;
-    Panel1: TPanel;
-    Image3: TImage;
+    pnl_estudante: TPanel;
+    img_estudante: TImage;
     lbl_estudante: TLabel;
+    pnl_disciplina: TPanel;
+    img_disciplina: TImage;
+    lbl_disciplina: TLabel;
+    pnl_turma: TPanel;
+    img_turma: TImage;
+    lbl_turma: TLabel;
+    Panel1: TPanel;
+    img_matricula: TImage;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
+    procedure lbl_estudanteClick(Sender: TObject);
+    procedure img_estudanteClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
-    { Private declarations }
+    FormAberto: Tform;
+    procedure AbrirFormEstudantes;
   public
     connection: TFDConnection;
   end;
@@ -52,6 +64,13 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.AbrirFormEstudantes;
+begin
+  FormAberto:= FormEstudantes;
+  FormEstudantes.Parent := pnl_direita;
+  FormEstudantes.Show;
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
@@ -72,12 +91,16 @@ var
   Listamatriculas: TObjectList<Tmatricula>;
 
 begin
-  connection:= FDConnection1;
-  //  validar os campos
-  // if edit_nome.text = '' then begin
-    //ShowMessage('campo nome obrigatorio');
-  // end;
+ 
+end;
 
+procedure TForm1.FormShow(Sender: TObject);
+var
+   Listamatriculas: TObjectList<Tmatricula>;
+  matriculaController: TMatriculaController;
+  matricula: Tmatricula;
+begin
+ connection:= form2.FDConnection1;
   connection.Connected := true;
   matriculaController:= TmatriculaController.Create(connection);
   listamatriculas:= matriculacontroller.Listarmatriculas;
@@ -85,7 +108,7 @@ begin
     showMessage(matricula.getIdTurma.ToString);
     showMessage(matricula.getIdEstudante.ToString);
   end;
-   listamatriculas.Free;
+//   listamatriculas.Free;
   //turmaController:= TTurmaController.Create(connection);
   //turma:= turmaController.SelectTurmaPorId(3);
   //disciplinaController.DeletarDisciplina(4);
@@ -96,9 +119,19 @@ begin
   connection.Connected := False;
 end;
 
+procedure TForm1.img_estudanteClick(Sender: TObject);
+begin
+  AbrirFormEstudantes;
+end;
+
 procedure TForm1.Label2Click(Sender: TObject);
 begin
-aasdadsa
+//aaa
+end;
+
+procedure TForm1.lbl_estudanteClick(Sender: TObject);
+begin
+  AbrirFormEstudantes;
 end;
 
 end.

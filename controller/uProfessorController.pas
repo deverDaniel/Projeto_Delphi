@@ -2,7 +2,7 @@ unit uProfessorController;
 
 interface
 uses
-  uProfessores, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
+  uProfessor, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
 
   type TProfessorController = class
   private

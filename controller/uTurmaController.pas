@@ -2,7 +2,7 @@ unit uTurmaController;
 
 interface
 uses
-  uTurmas, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
+  uTurma, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
 
   type TTurmaController = class
   private

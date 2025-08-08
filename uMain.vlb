@@ -1,7 +1,4 @@
-﻿[TabSheet1]
-Coordinates=10,78,77,36
-
-[DataSource1]
+﻿[DataSource1]
 Coordinates=0,0,89,58
 Visible=True
 
@@ -21,5 +18,5 @@ Coordinates=219,111,104,36
 Coordinates=93,10,77,36
 
 []
-Coordinates=101,151,91,36
+Coordinates=10,78,77,36
 

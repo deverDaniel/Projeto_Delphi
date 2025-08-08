@@ -2,7 +2,7 @@ unit uDisciplinaController;
 
 interface
 uses
-  uDisciplinas, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
+  uDisciplina, FireDAC.Comp.Client, System.SysUtils, System.Generics.Collections;
 
   type TDisciplinaController = class
   private

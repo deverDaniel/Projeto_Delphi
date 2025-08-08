@@ -1,31 +1,34 @@
-unit uDisciplinas;
+unit uProfessor;
 
 interface
   uses data.DB, FireDAC.Comp.Client, System.SysUtils, FMX.Dialogs;
 type
-  TDisciplina = class
+  TProfessor = class
   private
     id: Integer;
     nome: String;
+    cpf: String;
     connection: TFDConnection;
   public
     function getId: Integer;
-    procedure setId (id: Integer);
+    procedure setId(id:Integer);
     function getNome: String;
     procedure setNome(nome: String);
+    function getCpf: String;
+    procedure setCpf(cpf: String);
     constructor Create(connection: TFDConnection);
-    procedure Adicionar;
     procedure Validar;
-    procedure Alterar;
-    procedure Deletar;
-    procedure Selectdisciplinaporid;
+    procedure Adicionar;
+    procedure AlterarProfessor;
+    procedure DeletarProfessor;
+    procedure SelectProfessorporid;
 
   end;
 
 implementation
 
-procedure TDisciplina.Adicionar;
-var
+procedure TProfessor.Adicionar;
+  var
   Query: TFDQuery;
 begin
   try
@@ -33,8 +36,8 @@ begin
     try
       Query := TFDQuery.Create(nil);
       Query.connection := self.connection;
-      Query.SQL.Text := 'Insert into Disciplinas (nome) VALUES (' +
-        QuotedStr(self.nome) + ')';
+      Query.SQL.Text := 'Insert into Professores (nome, cpf) VALUES (' +
+        QuotedStr(self.nome) + ', '+ QuotedStr(self.cpf) +' )';
       Query.ExecSQL;
     finally
       Query.Close;
@@ -48,7 +51,7 @@ begin
   end;
 end;
 
-procedure TDisciplina.Alterar;
+procedure TProfessor.AlterarProfessor;
 var
   Query: TFDQuery;
 begin
@@ -57,8 +60,8 @@ begin
     try
       Query := TFDQuery.Create(nil);
       Query.connection := self.connection;
-      Query.SQL.Text := 'UPDATE public.disciplinas SET nome= ' +
-      QuotedStr(self.nome) + ' WHERE id = ' + self.id.ToString;
+      Query.SQL.Text := 'UPDATE public.Professores SET nome= ' +
+      QuotedStr(self.nome) + ', cpf= ' + QuotedStr(self.cpf) +' WHERE id = ' + self.id.ToString;
       Query.ExecSQL;
     finally
       Query.Close;
@@ -72,15 +75,14 @@ begin
   end;
 end;
 
-{ Disciplinas }
+{ Professores }
 
-constructor TDisciplina.Create(connection: TFDConnection);
+constructor TProfessor.Create(connection: TFDConnection);
 begin
   self.connection:= connection;
-
 end;
 
-procedure TDisciplina.Deletar;
+procedure TProfessor.DeletarProfessor;
 var
   Query: TFDQuery;
 begin
@@ -88,7 +90,7 @@ begin
     try
       Query := TFDQuery.Create(nil);
       Query.connection := self.connection;
-      Query.SQL.Text := 'DELETE FROM public.disciplinas WHERE id = ' +
+      Query.SQL.Text := 'DELETE FROM public.Professores WHERE id = ' +
         self.id.ToString;
       Query.ExecSQL;
     finally
@@ -103,28 +105,34 @@ begin
   end;
 end;
 
-function TDisciplina.getId: Integer;
+function TProfessor.getCpf: String;
+begin
+  result := self.cpf;
+end;
+
+function TProfessor.getId: Integer;
 begin
   result := self.id;
 end;
 
-function TDisciplina.getNome: String;
+function TProfessor.getNome: String;
 begin
   result := self.nome
 end;
 
-procedure TDisciplina.SelectDisciplinaporid;
-var
+procedure TProfessor.SelectProfessorporid;
+  var
   Query: TFDQuery;
 begin
   try
     try
       Query := TFDQuery.Create(nil);
       Query.connection := self.connection;
-      Query.SQL.Text := 'select * from Disciplinas WHERE id = ' + self.id.ToString;
+      Query.SQL.Text := 'select * from Professores WHERE id = ' + self.id.ToString;
       Query.Open(Query.SQL.Text);
       Self.id:= Query.FieldByName('id').AsInteger;
       self.nome:=  Query.FieldByName('nome').AsString;
+      self.cpf:=  Query.FieldByName('cpf').AsString;
     finally
       Query.Close;
       Query.Free;
@@ -135,24 +143,32 @@ begin
       raise;
     end;
   end;
-
 end;
 
-procedure TDisciplina.setId(id: Integer);
+procedure TProfessor.setId(id: Integer);
 begin
   self.id:= id;
 end;
 
-procedure TDisciplina.setNome(nome: String);
+procedure TProfessor.setCpf(cpf: String);
+begin
+  self.cpf := cpf;
+end;
+
+procedure TProfessor.setNome(nome: String);
 begin
   self.nome := nome
 end;
 
-procedure TDisciplina.Validar;
+procedure TProfessor.Validar;
 begin
   if self.nome = '' then
   begin
     raise Exception.Create('Nome não pode ser vazio');
+  end;
+  if length(self.cpf) <> 11 then
+  begin
+    raise Exception.Create('CPF deve conter 11 digitos');
   end;
 end;
 
