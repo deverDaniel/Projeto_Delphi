@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 461
-  ClientWidth = 888
+  ClientHeight = 587
+  ClientWidth = 775
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,28 +16,33 @@ object Form1: TForm1
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 888
-    Height = 461
+    Width = 775
+    Height = 587
     ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 888
+    ExplicitHeight = 461
     object TabSheet2: TTabSheet
       Caption = 'TabSheet2'
       ImageIndex = 1
       object pnl_fundo: TPanel
         Left = 0
         Top = 0
-        Width = 880
-        Height = 431
+        Width = 767
+        Height = 557
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 880
+        ExplicitHeight = 431
         object pnl_esquerda: TPanel
           Left = 1
           Top = 1
           Width = 185
-          Height = 429
+          Height = 555
           Align = alLeft
           TabOrder = 0
+          ExplicitHeight = 429
           object pnl_logo: TPanel
             Left = 1
             Top = 1
@@ -63,7 +68,13 @@ object Form1: TForm1
             Margins.Top = 50
             Align = alTop
             Color = clSkyBlue
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
             ParentBackground = False
+            ParentFont = False
             TabOrder = 1
             object img_dashboard: TImage
               Left = 1
@@ -4626,41 +4637,19 @@ object Form1: TForm1
           end
         end
         object pnl_direita: TPanel
-          Left = 185
+          Left = 186
           Top = 1
-          Width = 694
-          Height = 429
-          Align = alRight
-          BevelOuter = bvNone
+          Width = 581
+          Height = 555
+          Align = alLeft
           TabOrder = 1
+          ExplicitLeft = 188
         end
       end
     end
   end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=db_sistema_academico'
-      'User_Name=postgres '
-      'Password=root'
-      'Server=localhost'
-      'DriverID=PG')
-    Left = 152
-    Top = 416
-  end
-  object FDQuery1: TFDQuery
-    Connection = FDConnection1
-    Left = 368
-    Top = 416
-  end
   object DataSource1: TDataSource
     Left = 64
-    Top = 416
-  end
-  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorLib = 
-      'C:\Users\Daniel Ferreira\Documents\Delphi\projeto_delphi\Projeto' +
-      '_Delphi\Win32\Debug\dll\lib\libpq.dll'
-    Left = 272
     Top = 416
   end
 end

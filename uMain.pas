@@ -18,15 +18,10 @@ uses
 
 type
   TForm1 = class(TForm)
-    FDConnection1: TFDConnection;
-    FDQuery1: TFDQuery;
-    DataSource1: TDataSource;
-    FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     PageControl1: TPageControl;
     TabSheet2: TTabSheet;
     pnl_fundo: TPanel;
     pnl_esquerda: TPanel;
-    pnl_direita: TPanel;
     pnl_logo: TPanel;
     pnl_btn_dashboard: TPanel;
     img_dashboard: TImage;
@@ -46,6 +41,8 @@ type
     Panel1: TPanel;
     img_matricula: TImage;
     Label1: TLabel;
+    DataSource1: TDataSource;
+    pnl_direita: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure Label2Click(Sender: TObject);
     procedure lbl_estudanteClick(Sender: TObject);
@@ -54,8 +51,11 @@ type
   private
     FormAberto: Tform;
     procedure AbrirFormEstudantes;
+    procedure TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
   public
     connection: TFDConnection;
+    pnlSelecionado: TPanel;
+    labelSelecionado: TLabel;
   end;
 
 var
@@ -67,6 +67,7 @@ implementation
 
 procedure TForm1.AbrirFormEstudantes;
 begin
+  TrocarPanelSelecionado(lbl_estudante, pnl_estudante);
   FormAberto:= FormEstudantes;
   FormEstudantes.Parent := pnl_direita;
   FormEstudantes.Show;
@@ -89,9 +90,9 @@ var
   matriculaController: TMatriculaController;
   matricula: Tmatricula;
   Listamatriculas: TObjectList<Tmatricula>;
-
 begin
- 
+  pnlSelecionado:= pnl_btn_dashboard;
+  labelSelecionado:= lbl_dashboard;
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
@@ -123,6 +124,16 @@ end;
 procedure TForm1.lbl_estudanteClick(Sender: TObject);
 begin
   AbrirFormEstudantes;
+end;
+
+procedure TForm1.TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
+begin
+  self.pnlSelecionado.Color:= clBtnFace;
+  self.labelSelecionado.Font.Color:= clWindowText;
+  pnlSelecionado:= PanelSelecionado;
+  labelSelecionado:= labelselecionado;
+  pnlSelecionado.Color:= clSkyBlue;
+  labelSelecionado.Font.Color:= clWindow;
 end;
 
 end.
