@@ -9,12 +9,12 @@ uses
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
   FireDAC.Phys, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, VCL.ExtCtrls,
   FireDAC.Phys.PGDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.PG, uConexao;
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.PG, uConexao, Vcl.Grids;
 
 type
   TFormEstudantes = class(TForm)
     lbl_titulo: TLabel;
-    lsvEstudantes: TListView;
+    GridEstudantes: TStringGrid;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -34,17 +34,19 @@ var
   estudantecontroller: TEstudanteController;
   estudante: Testudante;
   ListaEstudantes: TObjectList<Testudante>;
-  item: TListView;
+  count:Integer;
 begin
   connection:= form2.FDConnection1;
   connection.Connected := true;
-  lsvEstudantes.Items.Clear;
-  estudantecontroller:= estudantecontroller.Create(connection);
+  estudantecontroller:= Testudantecontroller.Create(connection);
   ListaEstudantes:= estudantecontroller.ListarEstudantes;
-  for estudante in ListaEstudantes do
-  begin
-    with LsvEstudantes.Items.Add do
-      Caption:= estudante.getNome;
+  GridEstudantes.Cells[0,0]:='Nome';
+  GridEstudantes.Cells[1,0]:='Editar';
+  count:= 1;
+  for estudante in ListaEstudantes do begin
+    GridEstudantes.Cells[0,count]:= estudante.getNome;
+    Inc(count);
+    GridEstudantes.RowCount:=GridEstudantes.RowCount+1;
   end;
 end;
 

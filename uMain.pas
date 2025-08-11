@@ -95,28 +95,19 @@ begin
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
-var
-   Listamatriculas: TObjectList<Tmatricula>;
-  matriculaController: TMatriculaController;
-  matricula: Tmatricula;
+//  estudantecontroller: TEstudanteController;
+//  estudante: Testudante;
+//  ListaEstudantes: TObjectList<Testudante>;
 begin
- connection:= form2.FDConnection1;
-  connection.Connected := true;
-  matriculaController:= TmatriculaController.Create(connection);
-  listamatriculas:= matriculacontroller.Listarmatriculas;
-  for matricula in Listamatriculas do begin
-    showMessage(matricula.getIdTurma.ToString);
-    showMessage(matricula.getIdEstudante.ToString);
-  end;
-//   listamatriculas.Free;
-  //turmaController:= TTurmaController.Create(connection);
-  //turma:= turmaController.SelectTurmaPorId(3);
-  //disciplinaController.DeletarDisciplina(4);
-  //professor:= professorController.SelectProfessorPorId(2);
-  //showMessage(matricula.getIdEstudante.ToString);
-  //showMessage(professor.getCpf);
-  //ShowMessage(disciplina.getNome);
-  connection.Connected := False;
+// connection:= form2.FDConnection1;
+// connection.Connected := true;
+//
+//  estudantecontroller:= Testudantecontroller.Create(connection);
+//  ListaEstudantes:= estudantecontroller.ListarEstudantes;
+//  for estudante in ListaEstudantes do begin
+//    ShowMessage(estudante.getNome);
+//  end;
+//  connection.Connected := False;
 end;
 
 procedure TForm1.img_estudanteClick(Sender: TObject);

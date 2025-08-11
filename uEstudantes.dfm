@@ -28,12 +28,15 @@ object FormEstudantes: TFormEstudantes
     Font.Style = []
     ParentFont = False
   end
-  object lsvEstudantes: TListView
-    Left = 8
-    Top = 128
-    Width = 640
-    Height = 257
-    Columns = <>
+  object GridEstudantes: TStringGrid
+    Left = 48
+    Top = 192
+    Width = 457
+    Height = 129
+    ColCount = 3
+    DefaultColWidth = 150
+    FixedCols = 0
+    RowCount = 2
     TabOrder = 0
   end
 end
