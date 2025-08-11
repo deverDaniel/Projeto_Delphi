@@ -1,7 +1,7 @@
-object Form1: TForm1
+object Form3: TForm3
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Form3'
   ClientHeight = 587
   ClientWidth = 775
   Color = clBtnFace
@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
-  OnShow = FormShow
   TextHeight = 15
   object PageControl1: TPageControl
     Left = 0
@@ -21,8 +20,6 @@ object Form1: TForm1
     ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 888
-    ExplicitHeight = 461
     object TabSheet2: TTabSheet
       Caption = 'TabSheet2'
       ImageIndex = 1
@@ -33,8 +30,6 @@ object Form1: TForm1
         Height = 557
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 880
-        ExplicitHeight = 431
         object pnl_esquerda: TPanel
           Left = 1
           Top = 1
@@ -42,7 +37,6 @@ object Form1: TForm1
           Height = 555
           Align = alLeft
           TabOrder = 0
-          ExplicitHeight = 429
           object pnl_logo: TPanel
             Left = 1
             Top = 1
@@ -364,6 +358,7 @@ object Form1: TForm1
             Width = 177
             Height = 41
             Align = alTop
+            ParentBackground = False
             TabOrder = 2
             object img_professor: TImage
               Left = 1
@@ -628,12 +623,12 @@ object Form1: TForm1
                 51112A8A6354848AE21815A1A2384645A8288EF97F5073E12CE0E91EBD000000
                 0049454E44AE426082}
               Stretch = True
-              OnClick = Label2Click
+              OnClick = lbl_professorClick
               ExplicitLeft = 0
               ExplicitTop = 0
               ExplicitHeight = 40
             end
-            object Label2: TLabel
+            object lbl_professor: TLabel
               AlignWithMargins = True
               Left = 45
               Top = 11
@@ -643,7 +638,7 @@ object Form1: TForm1
               Align = alLeft
               Alignment = taCenter
               Caption = 'Professor'
-              OnClick = Label2Click
+              OnClick = lbl_professorClick
               ExplicitHeight = 15
             end
           end
@@ -4643,13 +4638,8 @@ object Form1: TForm1
           Height = 555
           Align = alLeft
           TabOrder = 1
-          ExplicitLeft = 188
         end
       end
     end
-  end
-  object DataSource1: TDataSource
-    Left = 64
-    Top = 416
   end
 end

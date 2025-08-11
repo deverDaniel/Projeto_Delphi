@@ -14,10 +14,10 @@ uses
   Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessor, uProfessorController,
   uDisciplina, uDisciplinaController, uTurma, uTurmaController,
   uMatricula, uMatriculaController, System.Generics.Collections, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao, UProfessores;
 
 type
-  TForm1 = class(TForm)
+  TForm3 = class(TForm)
     PageControl1: TPageControl;
     TabSheet2: TTabSheet;
     pnl_fundo: TPanel;
@@ -28,7 +28,7 @@ type
     lbl_dashboard: TLabel;
     pnl_btn_professor: TPanel;
     img_professor: TImage;
-    Label2: TLabel;
+    lbl_professor: TLabel;
     pnl_estudante: TPanel;
     img_estudante: TImage;
     lbl_estudante: TLabel;
@@ -41,16 +41,15 @@ type
     Panel1: TPanel;
     img_matricula: TImage;
     Label1: TLabel;
-    DataSource1: TDataSource;
     pnl_direita: TPanel;
     procedure FormCreate(Sender: TObject);
-    procedure Label2Click(Sender: TObject);
+    procedure lbl_professorClick(Sender: TObject);
     procedure lbl_estudanteClick(Sender: TObject);
     procedure img_estudanteClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     FormAberto: Tform;
     procedure AbrirFormEstudantes;
+    procedure AbrirFormProfessores;
     procedure TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
   public
     connection: TFDConnection;
@@ -59,13 +58,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Form3: TForm3;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.AbrirFormEstudantes;
+procedure TForm3.AbrirFormEstudantes;
 begin
   TrocarPanelSelecionado(lbl_estudante, pnl_estudante);
   FormAberto:= FormEstudantes;
@@ -73,66 +72,42 @@ begin
   FormEstudantes.Show;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-var
-  estudantecontroller: TEstudanteController;
-  estudante: Testudante;
-  ListaEstudantes: TObjectList<Testudante>;
-  professorController: TProfessorController;
-  professor: TProfessor;
-  Listaprofessores: TObjectList<Tprofessor>;
-  disciplinaController: TDisciplinaController;
-  disciplina: TDisciplina;
-  Listadisciplinas: TObjectList<Tdisciplina>;
-  turmaController: TTurmaController;
-  turma: TTurma;
-  Listaturmas: TObjectList<Tturma>;
-  matriculaController: TMatriculaController;
-  matricula: Tmatricula;
-  Listamatriculas: TObjectList<Tmatricula>;
+procedure TForm3.AbrirFormProfessores;
+begin
+  TrocarPanelSelecionado(lbl_professor, pnl_btn_professor);
+  FormAberto:= FormProfessores;
+  FormProfessores.Parent := pnl_direita;
+  FormProfessores.Show;
+end;
+
+procedure TForm3.FormCreate(Sender: TObject);
 begin
   pnlSelecionado:= pnl_btn_dashboard;
   labelSelecionado:= lbl_dashboard;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
-//  estudantecontroller: TEstudanteController;
-//  estudante: Testudante;
-//  ListaEstudantes: TObjectList<Testudante>;
-begin
-// connection:= form2.FDConnection1;
-// connection.Connected := true;
-//
-//  estudantecontroller:= Testudantecontroller.Create(connection);
-//  ListaEstudantes:= estudantecontroller.ListarEstudantes;
-//  for estudante in ListaEstudantes do begin
-//    ShowMessage(estudante.getNome);
-//  end;
-//  connection.Connected := False;
-end;
-
-procedure TForm1.img_estudanteClick(Sender: TObject);
+procedure TForm3.img_estudanteClick(Sender: TObject);
 begin
   AbrirFormEstudantes;
 end;
 
-procedure TForm1.Label2Click(Sender: TObject);
+procedure TForm3.lbl_professorClick(Sender: TObject);
 begin
-//aaa
+  AbrirFormProfessores;
 end;
 
-procedure TForm1.lbl_estudanteClick(Sender: TObject);
+procedure TForm3.lbl_estudanteClick(Sender: TObject);
 begin
   AbrirFormEstudantes;
 end;
 
-procedure TForm1.TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
+procedure TForm3.TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
 begin
   self.pnlSelecionado.Color:= clBtnFace;
   self.labelSelecionado.Font.Color:= clWindowText;
-  pnlSelecionado:= PanelSelecionado;
-  labelSelecionado:= labelselecionado;
-  pnlSelecionado.Color:= clSkyBlue;
+  self.pnlSelecionado:= PanelSelecionado;
+  self.labelSelecionado:= labelselecionado;
+  PanelSelecionado.Color:= clSkyBlue;
   labelSelecionado.Font.Color:= clWindow;
 end;
 

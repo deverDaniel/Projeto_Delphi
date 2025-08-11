@@ -14,15 +14,17 @@ uses
   uTurmaController in 'controller\uTurmaController.pas',
   uMatriculaController in 'controller\uMatriculaController.pas',
   uEstudantes in 'uEstudantes.pas' {FormEstudantes},
-  uConexao in 'uConexao.pas' {Form2};
+  uConexao in 'uConexao.pas' {Form2},
+  uProfessores in 'uProfessores.pas' {FormProfessores};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TFormEstudantes, FormEstudantes);
   Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TFormProfessores, FormProfessores);
   Application.Run;
 end.

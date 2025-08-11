@@ -1,9 +1,8 @@
-object FormEstudantes: TFormEstudantes
+object FormProfessores: TFormProfessores
   Left = 0
   Top = 0
-  Align = alClient
   BorderStyle = bsNone
-  Caption = 'FormEstudantes'
+  Caption = 'FormProfessores'
   ClientHeight = 557
   ClientWidth = 581
   Color = clBtnFace
@@ -23,39 +22,32 @@ object FormEstudantes: TFormEstudantes
     Height = 45
     Align = alTop
     Alignment = taCenter
-    Caption = 'Estudantes'
+    Caption = 'Professores'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
-    ExplicitWidth = 154
+    ExplicitWidth = 164
   end
-  object GridEstudantes: TStringGrid
-    AlignWithMargins = True
-    Left = 50
-    Top = 151
-    Width = 481
-    Height = 306
-    Margins.Left = 50
-    Margins.Top = 100
-    Margins.Right = 50
-    Margins.Bottom = 100
-    Align = alClient
-    ColCount = 3
-    DefaultColWidth = 481
-    FixedCols = 0
-    RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
+  object btn_adicionar: TButton
+    Left = 359
+    Top = 120
+    Width = 75
+    Height = 25
+    Caption = 'Adicionar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
-    OnExit = GridEstudantesExit
-    OnKeyDown = GridEstudantesKeyDown
-    OnSelectCell = GridEstudantesSelectCell
-    OnSetEditText = GridEstudantesSetEditText
+    OnClick = btn_adicionarClick
   end
   object btnExcluir: TButton
-    Left = 456
+    Left = 440
     Top = 120
     Width = 75
     Height = 25
@@ -69,12 +61,35 @@ object FormEstudantes: TFormEstudantes
     TabOrder = 1
     OnClick = btnExcluirClick
   end
+  object GridProfessores: TStringGrid
+    AlignWithMargins = True
+    Left = 50
+    Top = 151
+    Width = 481
+    Height = 306
+    Margins.Left = 50
+    Margins.Top = 100
+    Margins.Right = 50
+    Margins.Bottom = 100
+    Align = alClient
+    ColCount = 3
+    DefaultColWidth = 240
+    FixedCols = 0
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
+    TabOrder = 2
+    OnExit = GridProfessoresExit
+    OnKeyDown = GridProfessoresKeyDown
+    OnSelectCell = GridProfessoresSelectCell
+    OnSetEditText = GridProfessoresSetEditText
+    ExplicitLeft = 55
+  end
   object pnlExcluirConfirm: TPanel
-    Left = 176
-    Top = 256
+    Left = 168
+    Top = 216
     Width = 241
     Height = 97
-    TabOrder = 2
+    TabOrder = 3
     Visible = False
     object btn_nao: TBitBtn
       Left = 16
@@ -95,24 +110,9 @@ object FormEstudantes: TFormEstudantes
       OnClick = BtnConfirmaExclusaoClick
     end
   end
-  object btn_adicionar: TButton
-    Left = 375
-    Top = 120
-    Width = 75
-    Height = 25
-    Caption = 'Adicionar'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clRed
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 3
-    OnClick = btn_adicionarClick
-  end
-  object pnlAdicionarEstudante: TPanel
-    Left = 82
-    Top = 208
+  object pnlAdicionarProfessor: TPanel
+    Left = 50
+    Top = 153
     Width = 481
     Height = 121
     TabOrder = 4
@@ -124,38 +124,44 @@ object FormEstudantes: TFormEstudantes
       Height = 15
       Caption = 'Nome'
     end
-    object lblEditaEstudante: TLabel
+    object lblEditaProfessor: TLabel
       Left = 1
       Top = 1
       Width = 479
       Height = 25
       Align = alTop
       Alignment = taCenter
-      Caption = 'Adicionar Estudante'
+      Caption = 'Adicionar Professor'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = -15
-      ExplicitTop = 17
+      ExplicitWidth = 165
     end
-    object EdtEstudante: TEdit
+    object lblProfessorCpf: TLabel
+      Left = 24
+      Top = 85
+      Width = 17
+      Height = 15
+      Caption = 'cpf'
+    end
+    object EdtProfessorNome: TEdit
       Left = 70
       Top = 51
       Width = 121
       Height = 23
       TabOrder = 0
     end
-    object btnAdicionaEstudante: TButton
+    object btnAdicionaProfessor: TButton
       Left = 315
       Top = 88
       Width = 75
       Height = 25
       Caption = 'Adicionar'
       TabOrder = 1
-      OnClick = btnAdicionaEstudanteClick
+      OnClick = btnAdicionaProfessorClick
     end
     object btn_cancelar: TButton
       Left = 396
@@ -165,6 +171,13 @@ object FormEstudantes: TFormEstudantes
       Caption = 'Cancelar'
       TabOrder = 2
       OnClick = btn_cancelarClick
+    end
+    object EdtProfessorCpf: TEdit
+      Left = 70
+      Top = 80
+      Width = 121
+      Height = 23
+      TabOrder = 3
     end
   end
 end
