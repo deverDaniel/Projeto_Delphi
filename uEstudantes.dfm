@@ -6,7 +6,7 @@ object FormEstudantes: TFormEstudantes
   Caption = 'FormEstudantes'
   ClientHeight = 557
   ClientWidth = 581
-  Color = clBtnFace
+  Color = 16447992
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -24,11 +24,13 @@ object FormEstudantes: TFormEstudantes
     Align = alTop
     Alignment = taCenter
     Caption = 'Estudantes'
+    Color = 16447992
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
     Font.Name = 'Segoe UI'
     Font.Style = []
+    ParentColor = False
     ParentFont = False
     ExplicitWidth = 154
   end

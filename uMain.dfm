@@ -36,7 +36,10 @@ object FormMain: TFormMain
           Width = 185
           Height = 555
           Align = alLeft
+          Color = 16447992
+          ParentBackground = False
           TabOrder = 0
+          ExplicitLeft = -5
           object pnl_logo: TPanel
             Left = 1
             Top = 1
@@ -44,14 +47,30 @@ object FormMain: TFormMain
             Height = 88
             Align = alTop
             BevelOuter = bvNone
-            Caption = 'Sistema Acad'#234'mico'
+            Color = clMenuHighlight
             Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
+            Font.Color = clWhite
+            Font.Height = -16
             Font.Name = 'Segoe UI'
             Font.Style = []
+            ParentBackground = False
             ParentFont = False
             TabOrder = 0
+            object lblSistemaAcademico: TLabel
+              AlignWithMargins = True
+              Left = 3
+              Top = 35
+              Width = 177
+              Height = 50
+              Margins.Top = 35
+              Align = alClient
+              Alignment = taCenter
+              Caption = 'Sistema Acad'#234'mico'
+              ExplicitLeft = 4
+              ExplicitTop = 24
+              ExplicitWidth = 135
+              ExplicitHeight = 21
+            end
           end
           object pnl_btn_dashboard: TPanel
             AlignWithMargins = True
@@ -61,7 +80,7 @@ object FormMain: TFormMain
             Height = 41
             Margins.Top = 50
             Align = alTop
-            Color = clSkyBlue
+            Color = clMenuHighlight
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -12
@@ -4639,6 +4658,9 @@ object FormMain: TFormMain
           Width = 581
           Height = 555
           Align = alLeft
+          BevelOuter = bvNone
+          Color = 16447992
+          ParentBackground = False
           TabOrder = 1
         end
       end

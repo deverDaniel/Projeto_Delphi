@@ -42,6 +42,7 @@ type
     img_matricula: TImage;
     Label1: TLabel;
     pnl_direita: TPanel;
+    lblSistemaAcademico: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure lbl_professorClick(Sender: TObject);
     procedure lbl_estudanteClick(Sender: TObject);
@@ -128,7 +129,7 @@ begin
   self.labelSelecionado.Font.Color:= clWindowText;
   self.pnlSelecionado:= PanelSelecionado;
   self.labelSelecionado:= labelselecionado;
-  PanelSelecionado.Color:= clSkyBlue;
+  PanelSelecionado.Color:= clMenuHighlight;
   labelSelecionado.Font.Color:= clWindow;
 end;
 

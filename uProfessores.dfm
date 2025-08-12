@@ -5,7 +5,7 @@ object FormProfessores: TFormProfessores
   Caption = 'FormProfessores'
   ClientHeight = 557
   ClientWidth = 581
-  Color = clBtnFace
+  Color = 16447992
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
