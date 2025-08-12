@@ -76,6 +76,8 @@ implementation
 procedure TFormMain.AbrirFormDashboard;
 begin
   TrocarPanelSelecionado(lbl_dashboard, pnl_btn_dashboard);
+  if FormAberto <> nil then
+    FormAberto.Close;
   FormAberto:= FormDashboard;
   FormDashboard.Parent := pnl_direita;
   FormDashboard.Show;
@@ -84,6 +86,7 @@ end;
 procedure TFormMain.AbrirFormDisciplinas;
 begin
   TrocarPanelSelecionado(lbl_disciplina, pnl_disciplina);
+  FormAberto.Close;
   FormAberto:= FormDisciplinas;
   FormDisciplinas.Parent := pnl_direita;
   Formdisciplinas.Show;
@@ -92,6 +95,7 @@ end;
 procedure TFormMain.AbrirFormEstudantes;
 begin
   TrocarPanelSelecionado(lbl_estudante, pnl_estudante);
+  FormAberto.Close;
   FormAberto:= FormEstudantes;
   FormEstudantes.Parent := pnl_direita;
   FormEstudantes.Show;
@@ -100,6 +104,7 @@ end;
 procedure TFormMain.AbrirFormProfessores;
 begin
   TrocarPanelSelecionado(lbl_professor, pnl_btn_professor);
+  FormAberto.Close;
   FormAberto:= FormProfessores;
   FormProfessores.Parent := pnl_direita;
   FormProfessores.Show;

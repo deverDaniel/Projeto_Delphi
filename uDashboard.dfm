@@ -36,7 +36,7 @@ object FormDashboard: TFormDashboard
     Height = 137
     ParentColor = True
     TabOrder = 0
-    object lbl_professores: TLabel
+    object lbl_qtdd_professores: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 21
@@ -58,7 +58,7 @@ object FormDashboard: TFormDashboard
       ExplicitWidth = 26
       ExplicitHeight = 65
     end
-    object lbl_qtdd_professores: TLabel
+    object lbl_professores: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 96

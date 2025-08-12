@@ -10,8 +10,8 @@ type
   TFormDashboard = class(TForm)
     lbl_titulo: TLabel;
     pnl_professores: TPanel;
-    lbl_professores: TLabel;
     lbl_qtdd_professores: TLabel;
+    lbl_professores: TLabel;
     pnl_estudantes: TPanel;
     lbl_qtdd_estudantes: TLabel;
     lbl_estudantes: TLabel;
@@ -25,6 +25,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     procedure Preencheestudante;
+    procedure PreencheProfessores;
   public
     { Public declarations }
   end;
@@ -39,6 +40,7 @@ implementation
 procedure TFormDashboard.FormShow(Sender: TObject);
 begin
   Preencheestudante;
+  PreencheProfessores;
 end;
 
 procedure TFormDashboard.Preencheestudante;
@@ -50,6 +52,17 @@ begin
   estudantecontroller:= Testudantecontroller.Create(connection);
   lbl_qtdd_estudantes.Caption:= estudantecontroller.QuantidadeEstudantes.ToString;
   connection.Connected:= False;
+end;
+
+procedure TFormDashboard.PreencheProfessores;
+var
+  ProfessorController: TProfessorController;
+begin
+  connection:= FormConexao.FDConnection1;
+  connection.Connected := true;
+  Professorcontroller:= TProfessorcontroller.Create(connection);
+  lbl_qtdd_Professores.Caption:= Professorcontroller.QuantidadeProfessores.ToString;
+  connection.Connected:= False
 end;
 
 end.

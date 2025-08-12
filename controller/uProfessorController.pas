@@ -15,6 +15,7 @@ uses
     procedure Alterarprofessor(id:integer; nome, cpf:String);
     procedure DeletarProfessor(id: Integer);
     function ListarProfessores: TObjectList<TProfessor>;
+    function QuantidadeProfessores: Integer;
   end;
 
 
@@ -84,6 +85,30 @@ begin
       raise;
     end;
   end;
+end;
+
+function TProfessorController.QuantidadeProfessores: Integer;
+begin
+var Query: TFDQuery;
+begin
+  try
+    try
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select count(*) as quantidade from Professores';
+      Query.Open(Query.SQL.Text);
+      result:= Query.FieldByName('quantidade').AsInteger;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
+end;
 end;
 
 function TProfessorController.SelectProfessorPorId(id: Integer): TProfessor;
