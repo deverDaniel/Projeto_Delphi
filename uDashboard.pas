@@ -26,6 +26,7 @@ type
   private
     procedure Preencheestudante;
     procedure PreencheProfessores;
+    procedure PreencherDisciplinas;
   public
     { Public declarations }
   end;
@@ -41,6 +42,7 @@ procedure TFormDashboard.FormShow(Sender: TObject);
 begin
   Preencheestudante;
   PreencheProfessores;
+  PreencherDisciplinas;
 end;
 
 procedure TFormDashboard.Preencheestudante;
@@ -62,6 +64,17 @@ begin
   connection.Connected := true;
   Professorcontroller:= TProfessorcontroller.Create(connection);
   lbl_qtdd_Professores.Caption:= Professorcontroller.QuantidadeProfessores.ToString;
+  connection.Connected:= False
+end;
+
+procedure TFormDashboard.PreencherDisciplinas;
+var
+  DisciplinaController: TDisciplinaController;
+begin
+  connection:= FormConexao.FDConnection1;
+  connection.Connected := true;
+  Disciplinacontroller:= TDisciplinacontroller.Create(connection);
+  lbl_qtdd_Disciplinas.Caption:= Disciplinacontroller.QuantidadeDisciplinas.ToString;
   connection.Connected:= False
 end;
 

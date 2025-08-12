@@ -14,7 +14,8 @@ uses
     Function SelectDisciplinaPorId(id: Integer):TDisciplina;
     procedure AlterarDisciplina(id:integer; nome:String);
     procedure DeletarDisciplina(id: Integer);
-     function ListarDisciplinas: TObjectList<TDisciplina>;
+    function ListarDisciplinas: TObjectList<TDisciplina>;
+    function QuantidadeDisciplinas: Integer;
   end;
 
 
@@ -82,6 +83,28 @@ begin
     end;
   end;
 end;
+function TDisciplinaController.QuantidadeDisciplinas: Integer;
+var Query: TFDQuery;
+begin
+  try
+    try
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select count(*) as quantidade from Disciplinas';
+      Query.Open(Query.SQL.Text);
+      result:= Query.FieldByName('quantidade').AsInteger;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
+end;
+
 function TDisciplinaController.SelectDisciplinaPorId(id: Integer): TDisciplina;
 begin
   FDisciplina:= TDisciplina.Create(connection);

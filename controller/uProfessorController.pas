@@ -88,7 +88,6 @@ begin
 end;
 
 function TProfessorController.QuantidadeProfessores: Integer;
-begin
 var Query: TFDQuery;
 begin
   try
@@ -108,7 +107,6 @@ begin
       raise;
     end;
   end;
-end;
 end;
 
 function TProfessorController.SelectProfessorPorId(id: Integer): TProfessor;
