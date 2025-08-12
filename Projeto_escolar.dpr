@@ -17,7 +17,8 @@ uses
   uConexao in 'uConexao.pas' {FormConexao},
   uProfessores in 'uProfessores.pas' {FormProfessores},
   uDisciplinas in 'uDisciplinas.pas' {FormDisciplinas},
-  uDashboard in 'uDashboard.pas' {FormDashboard};
+  uDashboard in 'uDashboard.pas' {FormDashboard},
+  uTurmas in 'uTurmas.pas' {FormTurmas};
 
 {$R *.res}
 
@@ -30,5 +31,6 @@ begin
   Application.CreateForm(TFormEstudantes, FormEstudantes);
   Application.CreateForm(TFormProfessores, FormProfessores);
   Application.CreateForm(TFormDashboard, FormDashboard);
+  Application.CreateForm(TFormTurmas, FormTurmas);
   Application.Run;
 end.

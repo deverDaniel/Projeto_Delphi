@@ -1,9 +1,10 @@
 object FormDashboard: TFormDashboard
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'FormDashboard'
-  ClientHeight = 518
-  ClientWidth = 565
+  ClientHeight = 557
+  ClientWidth = 581
   Color = 16447992
   Font.Charset = DEFAULT_CHARSET
   Font.Color = 15426341
@@ -16,7 +17,7 @@ object FormDashboard: TFormDashboard
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 559
+    Width = 575
     Height = 45
     Align = alTop
     Alignment = taCenter

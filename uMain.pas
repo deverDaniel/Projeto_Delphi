@@ -15,7 +15,7 @@ uses
   uDisciplina, uDisciplinaController, uTurma, uTurmaController,
   uMatricula, uMatriculaController, System.Generics.Collections, Vcl.StdCtrls,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao, UProfessores, uDisciplinas,
-  uDashboard;
+  uDashboard, uTurmas;
 
 type
   TFormMain = class(TForm)
@@ -53,12 +53,15 @@ type
     procedure lbl_dashboardClick(Sender: TObject);
     procedure img_dashboardClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure lbl_turmaClick(Sender: TObject);
+    procedure img_turmaClick(Sender: TObject);
   private
     FormAberto: Tform;
     procedure AbrirFormEstudantes;
     procedure AbrirFormProfessores;
     procedure AbrirFormDisciplinas;
     procedure AbrirFormDashboard;
+    procedure AbrirFormTurmas;
     procedure TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
   public
     connection: TFDConnection;
@@ -110,6 +113,15 @@ begin
   FormProfessores.Show;
 end;
 
+procedure TFormMain.AbrirFormTurmas;
+begin
+  TrocarPanelSelecionado(lbl_turma, pnl_turma);
+  FormAberto.Close;
+  FormAberto:= FormTurmas;
+  FormTurmas.Parent := pnl_direita;
+  FormTurmas.Show;
+end;
+
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
   pnlSelecionado:= pnl_btn_dashboard;
@@ -136,9 +148,19 @@ begin
   AbrirFormEstudantes;
 end;
 
+procedure TFormMain.img_turmaClick(Sender: TObject);
+begin
+  AbrirFormTurmas;
+end;
+
 procedure TFormMain.lbl_professorClick(Sender: TObject);
 begin
   AbrirFormProfessores;
+end;
+
+procedure TFormMain.lbl_turmaClick(Sender: TObject);
+begin
+  AbrirFormTurmas;
 end;
 
 procedure TFormMain.lbl_dashboardClick(Sender: TObject);

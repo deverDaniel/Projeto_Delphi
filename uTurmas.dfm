@@ -1,8 +1,9 @@
-object FormProfessores: TFormProfessores
+object FormTurmas: TFormTurmas
   Left = 0
   Top = 0
+  Align = alClient
   BorderStyle = bsNone
-  Caption = 'FormProfessores'
+  Caption = 'FormTurmas'
   ClientHeight = 557
   ClientWidth = 581
   Color = 16447992
@@ -22,14 +23,14 @@ object FormProfessores: TFormProfessores
     Height = 45
     Align = alTop
     Alignment = taCenter
-    Caption = 'Professores'
+    Caption = 'Turmas'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
-    ExplicitWidth = 164
+    ExplicitWidth = 104
   end
   object btn_adicionar: TButton
     Left = 359
@@ -61,7 +62,7 @@ object FormProfessores: TFormProfessores
     TabOrder = 1
     OnClick = btnExcluirClick
   end
-  object GridProfessores: TStringGrid
+  object GridTurmas: TStringGrid
     AlignWithMargins = True
     Left = 50
     Top = 151
@@ -78,10 +79,6 @@ object FormProfessores: TFormProfessores
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
     TabOrder = 2
-    OnExit = GridProfessoresExit
-    OnKeyDown = GridProfessoresKeyDown
-    OnSelectCell = GridProfessoresSelectCell
-    OnSetEditText = GridProfessoresSetEditText
     ExplicitLeft = 45
   end
   object pnlExcluirConfirm: TPanel
@@ -110,21 +107,21 @@ object FormProfessores: TFormProfessores
       OnClick = BtnConfirmaExclusaoClick
     end
   end
-  object pnlAdicionarProfessor: TPanel
+  object pnlAdicionarTurma: TPanel
     Left = 50
     Top = 153
     Width = 481
     Height = 121
     TabOrder = 4
     Visible = False
-    object lbl_nome: TLabel
+    object lblDisciplina: TLabel
       Left = 24
       Top = 56
-      Width = 33
+      Width = 51
       Height = 15
-      Caption = 'Nome'
+      Caption = 'Disciplina'
     end
-    object lblEditaProfessor: TLabel
+    object lblEditaTurma: TLabel
       Left = 1
       Top = 1
       Width = 479
@@ -140,28 +137,20 @@ object FormProfessores: TFormProfessores
       ParentFont = False
       ExplicitWidth = 165
     end
-    object lblProfessorCpf: TLabel
+    object lblProfessor: TLabel
       Left = 24
       Top = 85
-      Width = 17
+      Width = 49
       Height = 15
-      Caption = 'cpf'
+      Caption = 'Professor'
     end
-    object EdtProfessorNome: TEdit
-      Left = 70
-      Top = 51
-      Width = 121
-      Height = 23
-      TabOrder = 0
-    end
-    object btnAdicionaProfessor: TButton
+    object btnAdicionaTurma: TButton
       Left = 315
       Top = 88
       Width = 75
       Height = 25
       Caption = 'Adicionar'
-      TabOrder = 1
-      OnClick = btnAdicionaProfessorClick
+      TabOrder = 0
     end
     object btn_cancelar: TButton
       Left = 396
@@ -169,15 +158,24 @@ object FormProfessores: TFormProfessores
       Width = 75
       Height = 25
       Caption = 'Cancelar'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btn_cancelarClick
     end
-    object EdtProfessorCpf: TEdit
-      Left = 70
-      Top = 80
-      Width = 121
+    object Cbox_Disciplina: TComboBox
+      Left = 88
+      Top = 48
+      Width = 169
+      Height = 23
+      TabOrder = 2
+      Text = 'Selecione Uma Disciplina'
+    end
+    object cbox_professor: TComboBox
+      Left = 88
+      Top = 77
+      Width = 169
       Height = 23
       TabOrder = 3
+      Text = 'Selecione Um Professor'
     end
   end
 end

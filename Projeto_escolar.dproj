@@ -158,6 +158,10 @@
             <Form>FormDashboard</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uTurmas.pas">
+            <Form>FormTurmas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

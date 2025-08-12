@@ -4292,6 +4292,7 @@ object FormMain: TFormMain
                 0088A00B8220088201104117044110040320822E088220080640045D10044110
                 0C8008BA200882201880FF0F76D7901BC0BCEF030000000049454E44AE426082}
               Stretch = True
+              OnClick = img_turmaClick
               ExplicitLeft = 0
               ExplicitTop = 0
               ExplicitHeight = 40
@@ -4308,6 +4309,7 @@ object FormMain: TFormMain
               Caption = 'Turma'
               Color = clWhite
               ParentColor = False
+              OnClick = lbl_turmaClick
               ExplicitHeight = 15
             end
           end
