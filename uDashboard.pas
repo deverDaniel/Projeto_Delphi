@@ -27,6 +27,7 @@ type
     procedure Preencheestudante;
     procedure PreencheProfessores;
     procedure PreencherDisciplinas;
+    procedure PreencherTurmas;
   public
     { Public declarations }
   end;
@@ -43,6 +44,7 @@ begin
   Preencheestudante;
   PreencheProfessores;
   PreencherDisciplinas;
+  PreencherTurmas;
 end;
 
 procedure TFormDashboard.Preencheestudante;
@@ -75,6 +77,17 @@ begin
   connection.Connected := true;
   Disciplinacontroller:= TDisciplinacontroller.Create(connection);
   lbl_qtdd_Disciplinas.Caption:= Disciplinacontroller.QuantidadeDisciplinas.ToString;
+  connection.Connected:= False
+end;
+
+procedure TFormDashboard.PreencherTurmas;
+var
+  TurmaController: TTurmaController;
+begin
+  connection:= FormConexao.FDConnection1;
+  connection.Connected := true;
+  Turmacontroller:= TTurmacontroller.Create(connection);
+  lbl_qtdd_Turmas.Caption:= Turmacontroller.QuantidadeTurmas.ToString;
   connection.Connected:= False
 end;
 

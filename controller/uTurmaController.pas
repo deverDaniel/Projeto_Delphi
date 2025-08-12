@@ -15,6 +15,7 @@ uses
     procedure AlterarTurma(id, id_professor, id_disciplina: integer);
     procedure DeletarTurma(id: Integer);
     function ListarTurmas: TObjectList<TTurma>;
+    function QuantidadeTurmas: Integer;
   end;
 
 
@@ -74,6 +75,28 @@ begin
         Query.Next;
       end;
       Result:=Listaturmas;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
+end;
+
+function TTurmaController.QuantidadeTurmas: Integer;
+var Query: TFDQuery;
+begin
+  try
+    try
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select count(*) as quantidade from Turmas';
+      Query.Open(Query.SQL.Text);
+      result:= Query.FieldByName('quantidade').AsInteger;
     finally
       Query.Close;
       Query.Free;
