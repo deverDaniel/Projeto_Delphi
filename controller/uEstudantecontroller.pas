@@ -15,6 +15,7 @@ uses
     procedure AlterarEstudante(id:integer; nome:String);
     procedure DeletarEstudante(id: Integer);
     function ListarEstudantes: TObjectList<TEstudante>;
+    function QuantidadeEstudantes: integer;
   end;
 
 
@@ -79,6 +80,28 @@ begin
         Query.Next;
       end;
       Result:=ListaEstudantes;
+    finally
+      Query.Close;
+      Query.Free;
+    end;
+  except
+    on E: Exception do
+    begin
+      raise;
+    end;
+  end;
+end;
+
+function TEstudanteController.QuantidadeEstudantes: integer;
+var Query: TFDQuery;
+begin
+  try
+    try
+      Query := TFDQuery.Create(nil);
+      Query.connection := self.connection;
+      Query.SQL.Text := 'select count(*) as quantidade from estudantes';
+      Query.Open(Query.SQL.Text);
+      result:= Query.FieldByName('quantidade').AsInteger;
     finally
       Query.Close;
       Query.Free;
