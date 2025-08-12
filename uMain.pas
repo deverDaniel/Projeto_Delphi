@@ -14,10 +14,10 @@ uses
   Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessor, uProfessorController,
   uDisciplina, uDisciplinaController, uTurma, uTurmaController,
   uMatricula, uMatriculaController, System.Generics.Collections, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao, UProfessores;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao, UProfessores, uDisciplinas;
 
 type
-  TForm3 = class(TForm)
+  TFormMain = class(TForm)
     PageControl1: TPageControl;
     TabSheet2: TTabSheet;
     pnl_fundo: TPanel;
@@ -46,10 +46,13 @@ type
     procedure lbl_professorClick(Sender: TObject);
     procedure lbl_estudanteClick(Sender: TObject);
     procedure img_estudanteClick(Sender: TObject);
+    procedure lbl_disciplinaClick(Sender: TObject);
+    procedure img_disciplinaClick(Sender: TObject);
   private
     FormAberto: Tform;
     procedure AbrirFormEstudantes;
     procedure AbrirFormProfessores;
+    procedure AbrirFormDisciplinas;
     procedure TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
   public
     connection: TFDConnection;
@@ -58,13 +61,21 @@ type
   end;
 
 var
-  Form3: TForm3;
+  FormMain: TFormMain;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm3.AbrirFormEstudantes;
+procedure TFormMain.AbrirFormDisciplinas;
+begin
+  TrocarPanelSelecionado(lbl_disciplina, pnl_disciplina);
+  FormAberto:= FormDisciplinas;
+  FormDisciplinas.Parent := pnl_direita;
+  Formdisciplinas.Show;
+end;
+
+procedure TFormMain.AbrirFormEstudantes;
 begin
   TrocarPanelSelecionado(lbl_estudante, pnl_estudante);
   FormAberto:= FormEstudantes;
@@ -72,7 +83,7 @@ begin
   FormEstudantes.Show;
 end;
 
-procedure TForm3.AbrirFormProfessores;
+procedure TFormMain.AbrirFormProfessores;
 begin
   TrocarPanelSelecionado(lbl_professor, pnl_btn_professor);
   FormAberto:= FormProfessores;
@@ -80,28 +91,38 @@ begin
   FormProfessores.Show;
 end;
 
-procedure TForm3.FormCreate(Sender: TObject);
+procedure TFormMain.FormCreate(Sender: TObject);
 begin
   pnlSelecionado:= pnl_btn_dashboard;
   labelSelecionado:= lbl_dashboard;
 end;
 
-procedure TForm3.img_estudanteClick(Sender: TObject);
+procedure TFormMain.img_disciplinaClick(Sender: TObject);
+begin
+  AbrirFormDisciplinas;
+end;
+
+procedure TFormMain.img_estudanteClick(Sender: TObject);
 begin
   AbrirFormEstudantes;
 end;
 
-procedure TForm3.lbl_professorClick(Sender: TObject);
+procedure TFormMain.lbl_professorClick(Sender: TObject);
 begin
   AbrirFormProfessores;
 end;
 
-procedure TForm3.lbl_estudanteClick(Sender: TObject);
+procedure TFormMain.lbl_disciplinaClick(Sender: TObject);
+begin
+  AbrirFormDisciplinas;
+end;
+
+procedure TFormMain.lbl_estudanteClick(Sender: TObject);
 begin
   AbrirFormEstudantes;
 end;
 
-procedure TForm3.TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
+procedure TFormMain.TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
 begin
   self.pnlSelecionado.Color:= clBtnFace;
   self.labelSelecionado.Font.Color:= clWindowText;

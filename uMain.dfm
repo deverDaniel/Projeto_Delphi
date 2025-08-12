@@ -1,7 +1,7 @@
-object Form3: TForm3
+object FormMain: TFormMain
   Left = 0
   Top = 0
-  Caption = 'Form3'
+  Caption = 'FormMain'
   ClientHeight = 587
   ClientWidth = 775
   Color = clBtnFace
@@ -2791,6 +2791,7 @@ object Form3: TForm3
                 007001021D00001720D001007001021D00001720D001007081FF078122B128D1
                 1327E70000000049454E44AE426082}
               Stretch = True
+              OnClick = img_disciplinaClick
               ExplicitLeft = 0
               ExplicitTop = 0
               ExplicitHeight = 40
@@ -2807,6 +2808,7 @@ object Form3: TForm3
               Caption = 'Disciplina'
               Color = clWhite
               ParentColor = False
+              OnClick = lbl_disciplinaClick
               ExplicitHeight = 15
             end
           end

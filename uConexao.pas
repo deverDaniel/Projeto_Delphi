@@ -12,7 +12,7 @@ uses
   FireDAC.Comp.Client;
 
 type
-  TForm2 = class(TForm)
+  TFormConexao = class(TForm)
     FDConnection1: TFDConnection;
     DataSource1: TDataSource;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
@@ -24,7 +24,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  FormConexao: TFormConexao;
 
 implementation
 

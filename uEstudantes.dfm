@@ -138,8 +138,7 @@ object FormEstudantes: TFormEstudantes
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = -15
-      ExplicitTop = 17
+      ExplicitWidth = 169
     end
     object EdtEstudante: TEdit
       Left = 70

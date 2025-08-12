@@ -2,7 +2,7 @@ program Projeto_escolar;
 
 uses
   Vcl.Forms,
-  uMain in 'uMain.pas' {Form1},
+  uMain in 'uMain.pas' {FormMain},
   uEstudante in 'model\uEstudante.pas',
   uProfessor in 'model\uProfessor.pas',
   uDisciplina in 'model\uDisciplina.pas',
@@ -14,17 +14,19 @@ uses
   uTurmaController in 'controller\uTurmaController.pas',
   uMatriculaController in 'controller\uMatriculaController.pas',
   uEstudantes in 'uEstudantes.pas' {FormEstudantes},
-  uConexao in 'uConexao.pas' {Form2},
-  uProfessores in 'uProfessores.pas' {FormProfessores};
+  uConexao in 'uConexao.pas' {FormConexao},
+  uProfessores in 'uProfessores.pas' {FormProfessores},
+  uDisciplinas in 'uDisciplinas.pas' {FormDisciplinas};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TFormMain, FormMain);
+  Application.CreateForm(TFormConexao, FormConexao);
+  Application.CreateForm(TFormDisciplinas, FormDisciplinas);
   Application.CreateForm(TFormEstudantes, FormEstudantes);
-  Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TFormProfessores, FormProfessores);
   Application.Run;
 end.

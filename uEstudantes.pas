@@ -66,7 +66,7 @@ begin
   if nome.Length < 3 then begin
     ShowMessage('nome Precisa ter mais de 3 letras');
   end else begin
-    connection:= form2.FDConnection1;
+    connection:= FormConexao.FDConnection1;
     connection.Connected:= True;
     estudantecontroller:= Testudantecontroller.Create(connection);
     estudantecontroller.AdicionarEstudante(nome);
@@ -82,7 +82,7 @@ end;
 procedure TFormEstudantes.BtnConfirmaExclusaoClick(Sender: TObject);
 var estudantecontroller: TEstudanteController;
 begin
-  connection:= form2.FDConnection1;
+  connection:= FormConexao.FDConnection1;
   connection.Connected:= True;
   estudantecontroller:= Testudantecontroller.Create(connection);
   estudantecontroller.DeletarEstudante(id);
@@ -128,7 +128,7 @@ var
   ListaEstudantes: TObjectList<Testudante>;
   count:Integer;
 begin
-  connection:= form2.FDConnection1;
+  connection:= FormConexao.FDConnection1;
   connection.Connected := true;
   estudantecontroller:= Testudantecontroller.Create(connection);
   ListaEstudantes:= estudantecontroller.ListarEstudantes;
@@ -160,7 +160,7 @@ begin
   if (Key = VK_RETURN) and Editando then
   begin
     editando:= False;
-    connection:= form2.FDConnection1;
+    connection:= FormConexao.FDConnection1;
     connection.Connected:= True;
     nome:= GridEstudantes.Cells[0,LinhaSelecionada];
     estudantecontroller:= Testudantecontroller.Create(connection);
@@ -177,7 +177,7 @@ var
 begin
  if (LinhaSelecionada <> Arow) and editando then begin
   editando:= False;
-  connection:= form2.FDConnection1;
+  connection:= FormConexao.FDConnection1;
   connection.Connected:= True;
   nome:= GridEstudantes.Cells[0,LinhaSelecionada];
   estudantecontroller:= Testudantecontroller.Create(connection);

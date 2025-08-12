@@ -1,8 +1,8 @@
-object FormProfessores: TFormProfessores
+object FormDisciplinas: TFormDisciplinas
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'FormProfessores'
+  Caption = 'FormDisciplinas'
   ClientHeight = 557
   ClientWidth = 581
   Color = clBtnFace
@@ -11,7 +11,6 @@ object FormProfessores: TFormProfessores
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object lbl_titulo: TLabel
@@ -22,32 +21,39 @@ object FormProfessores: TFormProfessores
     Height = 45
     Align = alTop
     Alignment = taCenter
-    Caption = 'Professores'
+    Caption = 'Disciplinas'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
-    ExplicitWidth = 164
+    ExplicitWidth = 150
   end
-  object btn_adicionar: TButton
-    Left = 359
-    Top = 120
-    Width = 75
-    Height = 25
-    Caption = 'Adicionar'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clRed
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
+  object GridDisciplinas: TStringGrid
+    AlignWithMargins = True
+    Left = 50
+    Top = 151
+    Width = 481
+    Height = 306
+    Margins.Left = 50
+    Margins.Top = 100
+    Margins.Right = 50
+    Margins.Bottom = 100
+    Align = alClient
+    ColCount = 3
+    DefaultColWidth = 481
+    FixedCols = 0
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
     TabOrder = 0
-    OnClick = btn_adicionarClick
+    OnKeyDown = GridDisciplinasKeyDown
+    OnSelectCell = GridDisciplinasSelectCell
+    OnSetEditText = GridDisciplinasSetEditText
+    ExplicitHeight = 229
   end
   object btnExcluir: TButton
-    Left = 440
+    Left = 456
     Top = 120
     Width = 75
     Height = 25
@@ -61,34 +67,12 @@ object FormProfessores: TFormProfessores
     TabOrder = 1
     OnClick = btnExcluirClick
   end
-  object GridProfessores: TStringGrid
-    AlignWithMargins = True
-    Left = 50
-    Top = 151
-    Width = 481
-    Height = 306
-    Margins.Left = 50
-    Margins.Top = 100
-    Margins.Right = 50
-    Margins.Bottom = 100
-    Align = alClient
-    ColCount = 3
-    DefaultColWidth = 240
-    FixedCols = 0
-    RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goFixedRowDefAlign]
-    TabOrder = 2
-    OnExit = GridProfessoresExit
-    OnKeyDown = GridProfessoresKeyDown
-    OnSelectCell = GridProfessoresSelectCell
-    OnSetEditText = GridProfessoresSetEditText
-  end
   object pnlExcluirConfirm: TPanel
-    Left = 168
-    Top = 216
+    Left = 176
+    Top = 255
     Width = 241
     Height = 97
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
     object btn_nao: TBitBtn
       Left = 16
@@ -100,8 +84,8 @@ object FormProfessores: TFormProfessores
       OnClick = btn_naoClick
     end
     object BtnConfirmaExclusao: TBitBtn
-      Left = 144
-      Top = 64
+      Left = 140
+      Top = 63
       Width = 75
       Height = 25
       Caption = 'Sim'
@@ -109,9 +93,24 @@ object FormProfessores: TFormProfessores
       OnClick = BtnConfirmaExclusaoClick
     end
   end
-  object pnlAdicionarProfessor: TPanel
-    Left = 50
-    Top = 153
+  object btn_adicionar: TButton
+    Left = 375
+    Top = 120
+    Width = 75
+    Height = 25
+    Caption = 'Adicionar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnClick = btn_adicionarClick
+  end
+  object pnlAdicionarDisciplina: TPanel
+    Left = 74
+    Top = 191
     Width = 481
     Height = 121
     TabOrder = 4
@@ -123,44 +122,38 @@ object FormProfessores: TFormProfessores
       Height = 15
       Caption = 'Nome'
     end
-    object lblEditaProfessor: TLabel
+    object lblEditaDisciplina: TLabel
       Left = 1
       Top = 1
       Width = 479
       Height = 25
       Align = alTop
       Alignment = taCenter
-      Caption = 'Adicionar Professor'
+      Caption = 'Adicionar Disciplina'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitWidth = 165
+      ExplicitLeft = -47
+      ExplicitTop = 80
     end
-    object lblProfessorCpf: TLabel
-      Left = 24
-      Top = 85
-      Width = 17
-      Height = 15
-      Caption = 'cpf'
-    end
-    object EdtProfessorNome: TEdit
+    object EdtDisciplinaNome: TEdit
       Left = 70
       Top = 51
       Width = 121
       Height = 23
       TabOrder = 0
     end
-    object btnAdicionaProfessor: TButton
+    object btnAdicionaDisciplina: TButton
       Left = 315
       Top = 88
       Width = 75
       Height = 25
       Caption = 'Adicionar'
       TabOrder = 1
-      OnClick = btnAdicionaProfessorClick
+      OnClick = btnAdicionaDisciplinaClick
     end
     object btn_cancelar: TButton
       Left = 396
@@ -170,13 +163,6 @@ object FormProfessores: TFormProfessores
       Caption = 'Cancelar'
       TabOrder = 2
       OnClick = btn_cancelarClick
-    end
-    object EdtProfessorCpf: TEdit
-      Left = 70
-      Top = 80
-      Width = 121
-      Height = 23
-      TabOrder = 3
     end
   end
 end

@@ -75,7 +75,7 @@ begin
   end else if cpf.Length < 11 then begin
      ShowMessage('Cpf Precisa ter 11 caracteres');
   end else begin
-    connection:= form2.FDConnection1;
+    connection:= FormConexao.FDConnection1;
     connection.Connected:= True;
     Professorcontroller:= TProfessorcontroller.Create(connection);
     Professorcontroller.AdicionarProfessor(nome, cpf);
@@ -92,7 +92,7 @@ end;
 procedure TFormProfessores.BtnConfirmaExclusaoClick(Sender: TObject);
 var Professorcontroller: TProfessorController;
 begin
-  connection:= form2.FDConnection1;
+  connection:= FormConexao.FDConnection1;
   connection.Connected:= True;
   Professorcontroller:= TProfessorcontroller.Create(connection);
   Professorcontroller.DeletarProfessor(id);
@@ -138,7 +138,7 @@ var
   ListaProfessores: TObjectList<TProfessor>;
   count:Integer;
 begin
-  connection:= form2.FDConnection1;
+  connection:= FormConexao.FDConnection1;
   connection.Connected := true;
   Professorcontroller:= TProfessorcontroller.Create(connection);
   ListaProfessores:= Professorcontroller.ListarProfessores;
@@ -171,7 +171,7 @@ begin
   if (Key = VK_RETURN) and Editando then
   begin
     editando:= False;
-    connection:= form2.FDConnection1;
+    connection:= FormConexao.FDConnection1;
     connection.Connected:= True;
     nome:= GridProfessores.Cells[0,LinhaSelecionada];
     cpf:= GridProfessores.Cells[1,LinhaSelecionada];
@@ -191,7 +191,7 @@ var
 begin
  if (LinhaSelecionada <> Arow) and editando then begin
   editando:= False;
-  connection:= form2.FDConnection1;
+  connection:= FormConexao.FDConnection1;
   connection.Connected:= True;
   nome:= GridProfessores.Cells[0,LinhaSelecionada];
   cpf:= GridProfessores.Cells[1,LinhaSelecionada];
