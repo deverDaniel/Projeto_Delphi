@@ -14,7 +14,8 @@ uses
   Vcl.Tabs, Vcl.ComCtrls, uEstudanteController, uEstudante, uProfessor, uProfessorController,
   uDisciplina, uDisciplinaController, uTurma, uTurmaController,
   uMatricula, uMatriculaController, System.Generics.Collections, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao, UProfessores, uDisciplinas;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, uEstudantes, uConexao, UProfessores, uDisciplinas,
+  uDashboard;
 
 type
   TFormMain = class(TForm)
@@ -49,11 +50,15 @@ type
     procedure img_estudanteClick(Sender: TObject);
     procedure lbl_disciplinaClick(Sender: TObject);
     procedure img_disciplinaClick(Sender: TObject);
+    procedure lbl_dashboardClick(Sender: TObject);
+    procedure img_dashboardClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     FormAberto: Tform;
     procedure AbrirFormEstudantes;
     procedure AbrirFormProfessores;
     procedure AbrirFormDisciplinas;
+    procedure AbrirFormDashboard;
     procedure TrocarPanelSelecionado(labelselecionado: TLabel; PanelSelecionado: TPanel);
   public
     connection: TFDConnection;
@@ -67,6 +72,14 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormMain.AbrirFormDashboard;
+begin
+  TrocarPanelSelecionado(lbl_dashboard, pnl_btn_dashboard);
+  FormAberto:= FormDashboard;
+  FormDashboard.Parent := pnl_direita;
+  FormDashboard.Show;
+end;
 
 procedure TFormMain.AbrirFormDisciplinas;
 begin
@@ -98,6 +111,16 @@ begin
   labelSelecionado:= lbl_dashboard;
 end;
 
+procedure TFormMain.FormShow(Sender: TObject);
+begin
+  AbrirFormDashboard;
+end;
+
+procedure TFormMain.img_dashboardClick(Sender: TObject);
+begin
+  AbrirFormDashboard;
+end;
+
 procedure TFormMain.img_disciplinaClick(Sender: TObject);
 begin
   AbrirFormDisciplinas;
@@ -111,6 +134,11 @@ end;
 procedure TFormMain.lbl_professorClick(Sender: TObject);
 begin
   AbrirFormProfessores;
+end;
+
+procedure TFormMain.lbl_dashboardClick(Sender: TObject);
+begin
+  AbrirFormDashboard;
 end;
 
 procedure TFormMain.lbl_disciplinaClick(Sender: TObject);

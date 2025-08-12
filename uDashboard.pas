@@ -3,8 +3,8 @@ unit uDashboard;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uDisciplinaController, uProfessorController, uTurmaController, uEstudantecontroller;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, FireDAC.Comp.Client,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uDisciplinaController, uProfessorController, uTurmaController, uEstudantecontroller, uConexao;
 
 type
   TFormDashboard = class(TForm)
@@ -21,8 +21,10 @@ type
     pnl_turmas: TPanel;
     lbl_qtdd_turmas: TLabel;
     lbl_turmas: TLabel;
+    connection: TFDConnection;
+    procedure FormShow(Sender: TObject);
   private
-    { Private declarations }
+    procedure Preencheestudante;
   public
     { Public declarations }
   end;
@@ -33,5 +35,21 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormDashboard.FormShow(Sender: TObject);
+begin
+  Preencheestudante;
+end;
+
+procedure TFormDashboard.Preencheestudante;
+var
+  estudanteController: TEstudanteController;
+begin
+  connection:= FormConexao.FDConnection1;
+  connection.Connected := true;
+  estudantecontroller:= Testudantecontroller.Create(connection);
+  lbl_qtdd_estudantes.Caption:= estudantecontroller.QuantidadeEstudantes.ToString;
+  connection.Connected:= False;
+end;
 
 end.

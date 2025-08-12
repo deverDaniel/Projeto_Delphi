@@ -10,6 +10,7 @@ object FormDashboard: TFormDashboard
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnShow = FormShow
   TextHeight = 15
   object lbl_titulo: TLabel
     AlignWithMargins = True

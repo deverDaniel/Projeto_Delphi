@@ -11,6 +11,7 @@ object FormMain: TFormMain
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object PageControl1: TPageControl
     Left = 0
@@ -346,6 +347,7 @@ object FormMain: TFormMain
                 89812624069A9018684262A00989812624069A9018684262A00989812624069A
                 90186842FA7F490E6B6869C279680000000049454E44AE426082}
               Stretch = True
+              OnClick = img_dashboardClick
               ExplicitLeft = -9
               ExplicitTop = 9
             end
@@ -367,6 +369,7 @@ object FormMain: TFormMain
               Font.Style = []
               ParentColor = False
               ParentFont = False
+              OnClick = lbl_dashboardClick
               ExplicitHeight = 15
             end
           end
