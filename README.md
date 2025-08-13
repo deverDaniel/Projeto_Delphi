@@ -1,6 +1,6 @@
 # Projeto\_Delphi
 
-
+#Daniel Afonso Santos Ferreira
 
 📚 Sistema de Gestão Acadêmica
 
@@ -32,25 +32,22 @@ Matrícula de estudantes em turmas
 
 Listagem de:
 
-
-
 Estudantes
-
-
 
 Professores
 
-
-
 Disciplinas
-
-
 
 Turmas
 
-
-
 Matrículas
+
+
+Relações:
+matriculas.id_estudante = Estudantes.id (1,N)
+matriculas.id_turma = Turmas.id (n, 1)
+turmas.id_professor = professores.id (n, 1)
+turmas.id_disciplina = Disciplinas.id (n, 1)
 
 
 
